@@ -2,12 +2,14 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const urlSchema = new Schema({
-  id: Number,
   longVersion: String,
   shortVersion: String,
-  userId: Number,
+  user_id: {
+    type: Schema.Types.ObjectId, 
+    ref: 'User',
+  },
   createdAt: Date,
   UpdatedAt: Date, 
 })
 
-module.exports = mongoose.model('User', urlSchema);
+module.exports = mongoose.model('Url', urlSchema);
