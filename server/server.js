@@ -15,9 +15,15 @@ app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: false}));
 
 const user = process.env.DB_USER;
-const password = process.env.DB_PASSWORD;
+const pw = process.env.DB_PASSWORD;
 
-mongoose.connect(`mongodb://${user}:${password}@ds143163.mlab.com:43163/tinee`);
+mongoose.connect(`mongodb://${user}:${pw}@ds143163.mlab.com:43163/tinee`, err => {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log("Connected to db")
+  }
+});
 
 
 app.use('/', router);
