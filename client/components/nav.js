@@ -1,26 +1,3 @@
-// import React, { Component } from 'react';
-
-// class Nav extends Component {
-
-//   render () {
-//     return (
-//       <nav>
-//         <div>
-//           <span><i class="fas fa-cut"></i></span>
-//         </div>
-//         <h1>Tinee</h1>
-//         <input type="text"/>
-//         <i class="fas fa-search"></i>
-//         <img src="./images/avatar-placeholder.png" alt="avatar"/>
-//         <p>Hello, jsmith</p>
-//         <button>Logout</button>
-//       </nav>
-//     )
-//   }
-// }
-
-// export default Nav;
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
@@ -114,7 +91,7 @@ const styles = theme => ({
   }
 });
 
-function SearchAppBar(props) {
+function Navbar(props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
@@ -125,7 +102,7 @@ function SearchAppBar(props) {
             src="../images/logo.png"
             className={classNames(classes.avatar, classes.bigAvatar)}
           />
-          <Typography className={classes.title} variant="title" color="inherit" noWrap>
+          <Typography className={classes.title} variant="display1" color="inherit" noWrap>
             Tinee
           </Typography>
           <div className={classes.grow} />
@@ -147,7 +124,7 @@ function SearchAppBar(props) {
             src="https://randomuser.me/api/portraits/men/43.jpg"
             className={classNames(classes.avatar, classes.bigAvatar, classes.notForMobile)}
           />
-          <Typography  className={classes.greeting} component="p" color="inherit" noWrap>
+          <Typography  className={classes.greeting} variant="title" color="inherit" noWrap>
              JSmith
           </Typography>
           <Button color="inherit">Logout</Button>
@@ -157,8 +134,8 @@ function SearchAppBar(props) {
   );
 }
 
-SearchAppBar.propTypes = {
+Navbar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(SearchAppBar);
+export default withStyles(styles)(Navbar);
