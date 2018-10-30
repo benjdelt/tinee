@@ -34,7 +34,6 @@ import SearchIcon from '@material-ui/icons/Search';
 import classNames from 'classnames';
 import Avatar from '@material-ui/core/Avatar';
 
-
 const styles = theme => ({
   root: {
     width: '100%',
@@ -48,13 +47,17 @@ const styles = theme => ({
   },
   title: {
     display: 'none',
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       display: 'block',
     },
   },
   greeting: {
+    display: 'none',
     marginLeft: 20,
     marginRight: 20,
+    [theme.breakpoints.up('md')]: {
+      display: 'block',
+    },
   },
   search: {
     position: 'relative',
@@ -103,6 +106,12 @@ const styles = theme => ({
     marginLeft: 20,
     marginRight: 20,
   },
+  notForMobile: {
+    display: 'none',
+    [theme.breakpoints.up('md')]: {
+      display: 'block',
+    },
+  }
 });
 
 function SearchAppBar(props) {
@@ -136,7 +145,7 @@ function SearchAppBar(props) {
           <Avatar
             alt="JSmith"
             src="https://randomuser.me/api/portraits/men/43.jpg"
-            className={classNames(classes.avatar, classes.bigAvatar)}
+            className={classNames(classes.avatar, classes.bigAvatar, classes.notForMobile)}
           />
           <Typography  className={classes.greeting} component="p" color="inherit" noWrap>
              JSmith
