@@ -31,7 +31,6 @@ import Input from '@material-ui/core/Input';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
-import ShareIcon from '@material-ui/icons/Share';
 import classNames from 'classnames';
 import Avatar from '@material-ui/core/Avatar';
 
@@ -97,6 +96,7 @@ const styles = theme => ({
   bigAvatar: {
     width: 60,
     height: 60,
+    
   },
 });
 
@@ -106,7 +106,11 @@ function SearchAppBar(props) {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <ShareIcon />
+          <Avatar
+            alt="Tinee"
+            src="../images/logo.png"
+            className={classNames(classes.avatar, classes.bigAvatar)}
+          />
           <Typography className={classes.title} variant="title" color="inherit" noWrap>
             Tinee
           </Typography>
@@ -129,7 +133,7 @@ function SearchAppBar(props) {
             src="https://randomuser.me/api/portraits/men/43.jpg"
             className={classNames(classes.avatar, classes.bigAvatar)}
           />
-          <Typography className={classes.title} variant="title" color="inherit" noWrap>
+          <Typography component="p" color="inherit" noWrap>
              JSmith
           </Typography>
           <Button color="inherit">Logout</Button>
