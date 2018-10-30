@@ -62,7 +62,7 @@ GET u/id → redirect to long url
 
 ## UI Framework
 
-Bootstrap React
+Material Design React
 
 
 ## Other Dependencies
