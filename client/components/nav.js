@@ -52,6 +52,10 @@ const styles = theme => ({
       display: 'block',
     },
   },
+  greeting: {
+    marginLeft: 20,
+    marginRight: 20,
+  },
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -96,7 +100,8 @@ const styles = theme => ({
   bigAvatar: {
     width: 60,
     height: 60,
-    
+    marginLeft: 20,
+    marginRight: 20,
   },
 });
 
@@ -133,7 +138,7 @@ function SearchAppBar(props) {
             src="https://randomuser.me/api/portraits/men/43.jpg"
             className={classNames(classes.avatar, classes.bigAvatar)}
           />
-          <Typography component="p" color="inherit" noWrap>
+          <Typography  className={classes.greeting} component="p" color="inherit" noWrap>
              JSmith
           </Typography>
           <Button color="inherit">Logout</Button>
