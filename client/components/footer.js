@@ -59,7 +59,7 @@ function DenseAppBar(props) {
             Tinee by Ben Deltenre
           </Typography>
           <Typography variant="subheading" color="inherit">
-            {/* Logo made with <Link to={"https://www.designevo.com/en/"} title="Free Online Logo Maker">DesignEvo</Link> */}
+            Logo made with <Typography variant="subheading" color="secondary"><a href="https://www.designevo.com/en/" title="Free Online Logo Maker">DesignEvo</a></Typography>
           </Typography>
         </Toolbar>
       </AppBar>

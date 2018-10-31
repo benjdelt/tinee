@@ -14,6 +14,7 @@ import Avatar from '@material-ui/core/Avatar';
 const styles = theme => ({
   root: {
     width: '100%',
+    marginBottom: '2em',
   },
   grow: {
     flexGrow: 1,
