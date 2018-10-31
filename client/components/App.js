@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 // import logo from './logo.svg';
 import '../css/App.css';
 import Navbar from './nav';
+import Urls from './urls'
 import Footer from './footer';
 class App extends Component {
   render() {
     return (
       <div>
         <Navbar></Navbar>
-        <Footer></Footer>
+        <Urls></Urls>
+        {/* <Footer></Footer> */}
       </div>
       // <div className="App">
       //   <header className="App-header">

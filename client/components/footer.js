@@ -55,8 +55,11 @@ function DenseAppBar(props) {
           <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
             <MenuIcon />
           </IconButton>
-          <Typography variant="title" color="inherit">
-            Photos
+          <Typography variant="subheading" color="inherit">
+            Tinee by Ben Deltenre
+          </Typography>
+          <Typography variant="subheading" color="inherit">
+            {/* Logo made with <Link to={"https://www.designevo.com/en/"} title="Free Online Logo Maker">DesignEvo</Link> */}
           </Typography>
         </Toolbar>
       </AppBar>
