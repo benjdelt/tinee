@@ -34,6 +34,7 @@ const styles = theme => ({
     margin: 0,
     padding: 0, 
     border: 0,
+    overflowX: 'hidden',
     flexGrow: 1,
     [theme.breakpoints.up('md')]: {
       display: 'block',
