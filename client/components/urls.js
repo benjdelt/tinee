@@ -11,7 +11,7 @@ class Urls extends Component {
   render() {
     return (
       <Grid container spacing={24}>
-        <Grid item xs>
+        <Grid item xs={12} sm={6} md={4}>
   
           <Typography variant='caption'>Created OCT 29, 3:05 PM</Typography>
           <MicrolinkCard
@@ -24,7 +24,7 @@ class Urls extends Component {
           <Button variant="outlined" color="secondary"><Delete />Delete</Button>
         </Grid>
            
-        <Grid item xs>
+        <Grid item xs={12} sm={6} md={4}>
 
           <Typography variant='caption'>Created OCT 29, 3:05 PM</Typography>
           <MicrolinkCard 
@@ -37,7 +37,7 @@ class Urls extends Component {
           <Button variant="outlined" color="secondary"><Delete />Delete</Button>
         </Grid>
 
-        <Grid item xs>
+        <Grid item xs={12} sm={6} md={4}>
   
           <Typography variant='caption'>Created OCT 29, 3:05 PM</Typography>
           <MicrolinkCard
@@ -50,7 +50,7 @@ class Urls extends Component {
           <Button variant="outlined" color="secondary"><Delete />Delete</Button>
         </Grid>
 
-        <Grid item xs>
+        <Grid item xs={12} sm={6} md={4}>
 
           <Typography variant='caption'>Created OCT 29, 3:05 PM</Typography>
           <MicrolinkCard

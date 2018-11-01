@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 import '../css/App.css';
+import Paper from '@material-ui/core/Paper';
 import Navbar from './nav';
 import Urls from './urls'
 import Footer from './footer';
@@ -9,7 +10,9 @@ class App extends Component {
     return (
       <div>
         <Navbar></Navbar>
-        <Urls></Urls>
+        <Paper elevation={3} style={{width: '85%', padding: 25, margin: "20px auto 0"}}>
+          <Urls></Urls>
+        </Paper>
         {/* <Footer></Footer> */}
       </div>
       // <div className="App">
