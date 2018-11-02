@@ -17,6 +17,7 @@ import React from 'react';
 
 // export default Footer;
 
+import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -30,11 +31,12 @@ const styles = theme => ({
     display: 'none',
     position: 'absolute',
     bottom: 0,
-    width: '100%',
-    margin: 0,
-    padding: 0, 
-    border: 0,
-    overflowX: 'hidden',
+    left: 0,
+    right: 0,
+    // width: '100%',
+    padding: '1rem',
+    textAlign: 'center',
+    overflow: 'hidden',
     flexGrow: 1,
     [theme.breakpoints.up('md')]: {
       display: 'block',
@@ -49,21 +51,25 @@ const styles = theme => ({
 function DenseAppBar(props) {
   const { classes } = props;
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar variant="dense">
-          <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="subheading" color="inherit">
-            Tinee by Ben Deltenre
+    <footer className={classes.root}>
+      <Grid container spacing={24}>
+        <Grid item md={4}>
+          <Typography variant="caption" color="primary">
+            Tinee by <a href="https://benjdelt.github.io/">Ben Deltenre</a> 
           </Typography>
-          <Typography variant="subheading" color="inherit">
-            Logo made with <Typography variant="subheading" color="secondary"><a href="https://www.designevo.com/en/" title="Free Online Logo Maker">DesignEvo</a></Typography>
+        </Grid>
+        <Grid item md={4}>
+          <Typography variant="caption" color="primary">
+            <a href="mailto:benjdelt@gmail.com">Contact</a>
           </Typography>
-        </Toolbar>
-      </AppBar>
-    </div>
+        </Grid>
+        <Grid item md={4}>
+          <Typography variant="caption" color="primary">
+            Logo made with <a href="https://www.designevo.com/en/" title="Free Online Logo Maker">DesignEvo</a>
+          </Typography>
+        </Grid>
+      </Grid>
+    </footer>
   );
 }
 
