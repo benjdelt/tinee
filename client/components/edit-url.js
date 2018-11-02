@@ -45,24 +45,26 @@ class EditUrl extends React.Component {
           <DialogTitle>
             {"Edit URL"}
           </DialogTitle>
-          <DialogContent>
-            <DialogContentText>
-              <TextField
-                autoFocus
-                margin="dense"
-                label="Long URL"
-                fullWidth
-              />
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={this.handleClose} color="inherit">
-              Cancel
-            </Button>
-            <Button onClick={this.handleClose} color="primary">
-              Update
-            </Button>
-          </DialogActions>
+            <form>
+              <DialogContent>
+                <DialogContentText>
+                  <TextField
+                    autoFocus
+                    margin="dense"
+                    label="Long URL"
+                    fullWidth
+                  />
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={this.handleClose} color="inherit">
+                  Cancel
+                </Button>
+                <Button type="submit" onClick={this.handleClose} color="primary">
+                  Update
+                </Button>
+              </DialogActions>
+            </form>  
         </Dialog>
       </span>
     );
