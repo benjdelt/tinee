@@ -8,10 +8,14 @@ import Edit from '@material-ui/icons/Create';
 import Delete from '@material-ui/icons/Delete';
 import PropTypes from 'prop-types';
 import { withStyles, MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import classNames from 'classnames';
 import orange from '@material-ui/core/colors/orange';
 
 const styles = theme => ({
-
+  urlElement: {
+    // marginLeft: '20px',
+    // marginRight: '20px',
+  }
 })
 
 const theme = createMuiTheme({
@@ -22,10 +26,10 @@ const theme = createMuiTheme({
 
 class Urls extends Component {
   render() {
-    // const { classes } = props;
+    const { classes } = this.props;
     return (
-      <Grid container spacing={24}>
-        <Grid item xs={12} sm={6} md={4}>
+      <Grid container spacing={24} justify="space-evenly">
+        <Grid item xs={12} sm={6} md={4} className={classes.urlElement}>
   
           <Typography variant='caption'>Created OCT 29, 3:05 PM</Typography>
           <MicrolinkCard
