@@ -34,7 +34,7 @@ class EditUrl extends React.Component {
 
   render() {
     return (
-      <div>
+      <span>
         <Button onClick={this.handleClickOpen} color="primary"><Edit />Edit</Button>
         <Dialog
           open={this.state.open}
@@ -64,7 +64,7 @@ class EditUrl extends React.Component {
             </Button>
           </DialogActions>
         </Dialog>
-      </div>
+      </span>
     );
   }
 }

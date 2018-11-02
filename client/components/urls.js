@@ -11,11 +11,15 @@ import { withStyles, MuiThemeProvider, createMuiTheme } from '@material-ui/core/
 import classNames from 'classnames';
 import orange from '@material-ui/core/colors/orange';
 
+import EditUrl from './edit-url';
+import { isNullOrUndefined } from 'util';
+
+
 const styles = theme => ({
   urlElement: {
     // marginLeft: '20px',
     // marginRight: '20px',
-  }
+  },
 })
 
 const theme = createMuiTheme({
@@ -38,7 +42,7 @@ class Urls extends Component {
           />
           <Button color="primary" variant="outlined" href="/abd123">/abd123</Button> 
           <Button color="primary"><Copy/>Copy</Button>
-          <Button color="primary"><Edit />Edit</Button>
+          <EditUrl></EditUrl>
           <MuiThemeProvider theme={theme}>
             <Button  variant="outlined" color="secondary"><Delete />Delete</Button>
           </MuiThemeProvider>  
@@ -53,7 +57,7 @@ class Urls extends Component {
           />
           <Button color="primary" variant="outlined" href="/abd123">/abd123</Button>
           <Button color="primary"><Copy/>Copy</Button>
-          <Button color="primary"><Edit />Edit</Button>
+          <EditUrl></EditUrl>
           <MuiThemeProvider theme={theme}>
             <Button  variant="outlined" color="secondary"><Delete />Delete</Button>
           </MuiThemeProvider>
@@ -68,7 +72,7 @@ class Urls extends Component {
           />
           <Button color="primary" variant="outlined" href="/abd123">/abd123</Button>
           <Button color="primary"><Copy/>Copy</Button>
-          <Button color="primary"><Edit />Edit</Button>
+          <EditUrl></EditUrl>
           <MuiThemeProvider theme={theme}>
             <Button  variant="outlined" color="secondary"><Delete />Delete</Button>
           </MuiThemeProvider>
@@ -83,7 +87,7 @@ class Urls extends Component {
           />
           <Button color="primary" variant="outlined" href="/abd123">/abd123</Button>
           <Button color="primary"><Copy/>Copy</Button>
-          <Button color="primary"><Edit />Edit</Button>
+          <EditUrl></EditUrl>
           <MuiThemeProvider theme={theme}>
             <Button  variant="outlined" color="secondary"><Delete />Delete</Button>
           </MuiThemeProvider>
