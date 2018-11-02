@@ -15,7 +15,7 @@ const styles = theme => ({
     // flexWrap: 'wrap',
   },
   shortenForm: {
-    margin: '50px',
+    margin: '100px',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -33,9 +33,6 @@ const styles = theme => ({
     width: 200,
     display: 'block',
   },
-  menu: {
-    // width: 200,
-  },
 });
 class ShortenForm extends Component {
   render() {
@@ -43,7 +40,7 @@ class ShortenForm extends Component {
 
     return (
       <Grid container spacing={24}>
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={0} sm={4}>
         </Grid>
         <Grid item xs={12} sm={4}>
           <form className={classes.shortenForm}>
@@ -53,12 +50,12 @@ class ShortenForm extends Component {
                 className={classes.textField}
                 // value={this.state.name}
                 // onChange={this.handleChange('name')}
-                // margin="normal"
+                margin="normal"
             />
             <Button className={classes.searchButton}variant="contained" color="primary">Shorten</Button>
           </form>
         </Grid>
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={0} sm={4}>
         </Grid>
       </Grid>
     )
