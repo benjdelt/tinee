@@ -4,6 +4,7 @@ import '../css/App.css';
 import Paper from '@material-ui/core/Paper';
 import Navbar from './nav';
 import Urls from './urls'
+import EditUrl from './edit-url';
 import ShortenForm from './shorten-form'
 import Footer from './footer';
 class App extends Component {
@@ -13,6 +14,7 @@ class App extends Component {
         <Navbar></Navbar>
         <Paper elevation={3} style={{width: '85%', padding: 25, margin: "20px auto 0"}}>
           <ShortenForm></ShortenForm>
+          <EditUrl></EditUrl>
           <Urls></Urls>
           <Footer></Footer>
         </Paper>
