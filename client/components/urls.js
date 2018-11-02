@@ -6,9 +6,23 @@ import Grid from '@material-ui/core/Grid';
 import Copy from '@material-ui/icons/FileCopy';
 import Edit from '@material-ui/icons/Create';
 import Delete from '@material-ui/icons/Delete';
+import PropTypes from 'prop-types';
+import { withStyles, MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import orange from '@material-ui/core/colors/orange';
+
+const styles = theme => ({
+
+})
+
+const theme = createMuiTheme({
+  palette: {
+    secondary: orange,
+  },
+});
 
 class Urls extends Component {
   render() {
+    // const { classes } = props;
     return (
       <Grid container spacing={24}>
         <Grid item xs={12} sm={6} md={4}>
@@ -21,7 +35,9 @@ class Urls extends Component {
           <Button color="primary" variant="outlined" href="/abd123">/abd123</Button> 
           <Button color="primary"><Copy/>Copy</Button>
           <Button color="primary"><Edit />Edit</Button>
-          <Button variant="outlined" color="secondary"><Delete />Delete</Button>
+          <MuiThemeProvider theme={theme}>
+            <Button  variant="outlined" color="secondary"><Delete />Delete</Button>
+          </MuiThemeProvider>  
         </Grid>
            
         <Grid item xs={12} sm={6} md={4}>
@@ -34,7 +50,9 @@ class Urls extends Component {
           <Button color="primary" variant="outlined" href="/abd123">/abd123</Button>
           <Button color="primary"><Copy/>Copy</Button>
           <Button color="primary"><Edit />Edit</Button>
-          <Button variant="outlined" color="secondary"><Delete />Delete</Button>
+          <MuiThemeProvider theme={theme}>
+            <Button  variant="outlined" color="secondary"><Delete />Delete</Button>
+          </MuiThemeProvider>
         </Grid>
 
         <Grid item xs={12} sm={6} md={4}>
@@ -47,7 +65,9 @@ class Urls extends Component {
           <Button color="primary" variant="outlined" href="/abd123">/abd123</Button>
           <Button color="primary"><Copy/>Copy</Button>
           <Button color="primary"><Edit />Edit</Button>
-          <Button variant="outlined" color="secondary"><Delete />Delete</Button>
+          <MuiThemeProvider theme={theme}>
+            <Button  variant="outlined" color="secondary"><Delete />Delete</Button>
+          </MuiThemeProvider>
         </Grid>
 
         <Grid item xs={12} sm={6} md={4}>
@@ -60,12 +80,17 @@ class Urls extends Component {
           <Button color="primary" variant="outlined" href="/abd123">/abd123</Button>
           <Button color="primary"><Copy/>Copy</Button>
           <Button color="primary"><Edit />Edit</Button>
-          <Button variant="outlined" color="secondary"><Delete />Delete</Button>
+          <MuiThemeProvider theme={theme}>
+            <Button  variant="outlined" color="secondary"><Delete />Delete</Button>
+          </MuiThemeProvider>
         </Grid>
         
       </Grid>
     )
   }
 }
+Urls.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
-export default Urls;
+export default withStyles(styles)(Urls);
