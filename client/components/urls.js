@@ -2,14 +2,16 @@ import React, {Component} from 'react';
 import MicrolinkCard from 'react-microlink';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
 import Copy from '@material-ui/icons/FileCopy';
+import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
 import { withStyles, MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import classNames from 'classnames';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 import EditUrl from './edit-url';
 import DeleteUrl from './delete-url';
+import { runInThisContext } from 'vm';
 
 
 const styles = theme => ({
@@ -26,6 +28,15 @@ const styles = theme => ({
 // });
 
 class Urls extends Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      copied: false,
+    }
+  }
+
+
   render() {
     const { classes } = this.props;
     return (
@@ -37,7 +48,12 @@ class Urls extends Component {
             url='https://www.theverge.com/tldr/2018/2/7/16984284/tesla-space-falcon-heavy-launch-elon-musk'
             target='_blank'
           />
+          <Button color="primary" variant="outlined" href="/abd123">/abd123</Button>
+          <CopyToClipboard text="/abd123"
+          onCopy={() => this.setState({copied: true})}
+          >
           <Button color="primary"><Copy/>Copy</Button>
+          </CopyToClipboard>
           <EditUrl></EditUrl>
           <DeleteUrl></DeleteUrl>
         </Grid>
@@ -50,7 +66,12 @@ class Urls extends Component {
             target='_blank'
           />
           <Button color="primary" variant="outlined" href="/abd123">/abd123</Button>
-          <Button color="primary"><Copy/>Copy</Button>
+          <CopyToClipboard 
+            text="/abd123"
+            onCopy={() => this.setState({copied: true})}
+          >
+            <Button color="primary"><Copy/>Copy</Button>
+          </CopyToClipboard>
           <EditUrl></EditUrl>
           <DeleteUrl></DeleteUrl>
         </Grid>
@@ -63,7 +84,12 @@ class Urls extends Component {
             target='_blank'
           />
           <Button color="primary" variant="outlined" href="/abd123">/abd123</Button>
-          <Button color="primary"><Copy/>Copy</Button>
+          <CopyToClipboard 
+            text="/abd123"
+            onCopy={() => this.setState({copied: true})}
+          >
+            <Button color="primary"><Copy/>Copy</Button>
+          </CopyToClipboard>
           <EditUrl></EditUrl>
           <DeleteUrl></DeleteUrl>
         </Grid>
@@ -76,7 +102,12 @@ class Urls extends Component {
             target='_blank'
           />
           <Button color="primary" variant="outlined" href="/abd123">/abd123</Button>
-          <Button color="primary"><Copy/>Copy</Button>
+          <CopyToClipboard 
+            text="/abd123"
+            onCopy={() => this.setState({copied: true})}
+          >
+            <Button color="primary"><Copy/>Copy</Button>
+          </CopyToClipboard>
           <EditUrl></EditUrl>
           <DeleteUrl></DeleteUrl>
         </Grid>
