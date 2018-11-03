@@ -38,7 +38,6 @@ class Urls extends Component {
             url='https://www.theverge.com/tldr/2018/2/7/16984284/tesla-space-falcon-heavy-launch-elon-musk'
             target='_blank'
           />
-          <Button color="primary" variant="outlined" href="/abd123">/abd123</Button> 
           <Button color="primary"><Copy/>Copy</Button>
           <EditUrl></EditUrl>
           <DeleteUrl></DeleteUrl>
