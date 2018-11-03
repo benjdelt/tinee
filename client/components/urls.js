@@ -9,6 +9,7 @@ import { withStyles, MuiThemeProvider, createMuiTheme } from '@material-ui/core/
 import classNames from 'classnames';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 
+import CopyUrl from './copy-url';
 import EditUrl from './edit-url';
 import DeleteUrl from './delete-url';
 import { runInThisContext } from 'vm';
@@ -29,14 +30,6 @@ const styles = theme => ({
 
 class Urls extends Component {
   
-  constructor(props) {
-    super(props);
-    this.state = {
-      copied: false,
-    }
-  }
-
-
   render() {
     const { classes } = this.props;
     return (
@@ -49,11 +42,12 @@ class Urls extends Component {
             target='_blank'
           />
           <Button color="primary" variant="outlined" href="/abd123">/abd123</Button>
-          <CopyToClipboard text="/abd123"
+          {/* <CopyToClipboard text="/abd123"
           onCopy={() => this.setState({copied: true})}
           >
           <Button color="primary"><Copy/>Copy</Button>
-          </CopyToClipboard>
+          </CopyToClipboard> */}
+          <CopyUrl></CopyUrl>
           <EditUrl></EditUrl>
           <DeleteUrl></DeleteUrl>
         </Grid>
@@ -66,12 +60,13 @@ class Urls extends Component {
             target='_blank'
           />
           <Button color="primary" variant="outlined" href="/abd123">/abd123</Button>
-          <CopyToClipboard 
+          {/* <CopyToClipboard 
             text="/abd123"
             onCopy={() => this.setState({copied: true})}
           >
             <Button color="primary"><Copy/>Copy</Button>
-          </CopyToClipboard>
+          </CopyToClipboard> */}
+          <CopyUrl></CopyUrl>
           <EditUrl></EditUrl>
           <DeleteUrl></DeleteUrl>
         </Grid>
@@ -84,12 +79,13 @@ class Urls extends Component {
             target='_blank'
           />
           <Button color="primary" variant="outlined" href="/abd123">/abd123</Button>
-          <CopyToClipboard 
+          {/* <CopyToClipboard 
             text="/abd123"
             onCopy={() => this.setState({copied: true})}
           >
             <Button color="primary"><Copy/>Copy</Button>
-          </CopyToClipboard>
+          </CopyToClipboard> */}
+          <CopyUrl></CopyUrl>
           <EditUrl></EditUrl>
           <DeleteUrl></DeleteUrl>
         </Grid>
