@@ -7,7 +7,6 @@ import Copy from '@material-ui/icons/FileCopy';
 import PropTypes from 'prop-types';
 import { withStyles, MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import classNames from 'classnames';
-import orange from '@material-ui/core/colors/orange';
 
 import EditUrl from './edit-url';
 import DeleteUrl from './delete-url';
