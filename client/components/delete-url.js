@@ -11,10 +11,7 @@ import { withStyles, MuiThemeProvider, createMuiTheme } from '@material-ui/core/
 import PropTypes from 'prop-types';
 
 const styles = theme => ({
-  urlElement: {
-    // marginLeft: '20px',
-    // marginRight: '20px',
-  },
+  
 })
 
 const theme = createMuiTheme({
