@@ -49,7 +49,7 @@ class DeleteUrl extends React.Component {
           keepMounted
           onClose={this.handleClose}
         >
-          <DialogTitle>
+          <DialogTitle style={{textAlign: 'center'}}>
             {"Delete URL"}
           </DialogTitle>
             <form>

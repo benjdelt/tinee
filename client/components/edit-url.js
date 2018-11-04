@@ -42,7 +42,7 @@ class EditUrl extends React.Component {
           keepMounted
           onClose={this.handleClose}
         >
-          <DialogTitle>
+          <DialogTitle style={{textAlign: 'center'}}>
             {"Edit URL"}
           </DialogTitle>
             <form>
