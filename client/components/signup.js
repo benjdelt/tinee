@@ -14,6 +14,9 @@ const styles = theme => ({
     // display: 'flex',
     // flexWrap: 'wrap',
   },
+  formText: {
+    textAlign: 'center',
+  },
   shortenForm: {
     display: 'flex',
     flexDirection: 'column',
@@ -43,16 +46,41 @@ class ShortenForm extends Component {
         <Grid item xs={0} sm={4}>
         </Grid>
         <Grid item xs={12} sm={4}>
+          <Typography variant="display1" className={classes.formText}>
+            Register
+          </Typography>
           <form className={classes.shortenForm}>
             <TextField
-                label = "Paste a link to shorten it" 
-                name = "longUrl"
+                label = "Email" 
+                name = "email"
+                type= "email"
                 className={classes.textField}
                 // value={this.state.name}
                 // onChange={this.handleChange('name')}
                 margin="normal"
+                required
             />
-            <Button className={classes.searchButton}variant="contained" color="primary">Shorten</Button>
+            <TextField
+                label = "Password" 
+                name = "password"
+                type="password"
+                className={classes.textField}
+                // value={this.state.name}
+                // onChange={this.handleChange('name')}
+                margin="normal"
+                required
+            />
+            <TextField
+                label = "Confirm Password" 
+                name = "password-confirmation"
+                type="password"
+                className={classes.textField}
+                // value={this.state.name}
+                // onChange={this.handleChange('name')}
+                margin="normal"
+                required
+            />
+            <Button className={classes.searchButton}variant="contained" color="primary">Sign Up</Button>
           </form>
         </Grid>
         <Grid item xs={0} sm={4}>

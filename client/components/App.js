@@ -12,12 +12,16 @@ class App extends Component {
     return (
       <div>
         <Navbar></Navbar>
-        <Paper elevation={3} style={{width: '85%', padding: 25, margin: "20px auto 0"}}>
-          {/* <ShortenForm></ShortenForm>
-          <Urls></Urls> */}
+        {/* <Paper elevation={3} style={{width: '85%', padding: 25, margin: "20px auto 0"}}>
+          <ShortenForm></ShortenForm>
+          <Urls></Urls>
+          <Footer></Footer>
+        </Paper> */}
+        <Paper elevation={3} style={{width: '40%', padding: 25, margin: "20px auto 0"}}>
           <Signup></Signup>
           <Footer></Footer>
         </Paper>
+        
       </div>
       // <div className="App">
       //   <header className="App-header">
