@@ -19,7 +19,6 @@ class App extends Component {
           <Urls></Urls>
           <Footer></Footer>
         </Paper> */}
-          <Signup></Signup>
           <Footer></Footer>        
       </div>
       // <div className="App">

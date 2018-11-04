@@ -8,6 +8,8 @@ import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import Avatar from '@material-ui/core/Avatar';
 
+import SignUp from './signup';
+
 const styles = theme => ({
   root: {
     width: '100%',
@@ -45,7 +47,7 @@ function NavAuth(props) {
             Tinee
           </Typography>
           <div className={classes.grow} />
-            <Button color="inherit">Sign Up</Button>
+            <SignUp></SignUp>
             <Button color="inherit">Log In</Button>
         </Toolbar>
       </AppBar>
