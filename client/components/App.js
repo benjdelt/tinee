@@ -17,11 +17,8 @@ class App extends Component {
           <Urls></Urls>
           <Footer></Footer>
         </Paper> */}
-        <Paper elevation={3} style={{width: '40%', padding: 25, margin: "20px auto 0"}}>
           <Signup></Signup>
-          <Footer></Footer>
-        </Paper>
-        
+          <Footer></Footer>        
       </div>
       // <div className="App">
       //   <header className="App-header">
