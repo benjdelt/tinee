@@ -9,6 +9,7 @@ import classNames from 'classnames';
 import Avatar from '@material-ui/core/Avatar';
 
 import SignUp from './signup';
+import LogIn from './login';
 
 const styles = theme => ({
   root: {
@@ -48,7 +49,7 @@ function NavAuth(props) {
           </Typography>
           <div className={classes.grow} />
             <SignUp></SignUp>
-            <Button color="inherit">Log In</Button>
+            <LogIn></LogIn>
         </Toolbar>
       </AppBar>
     </div>
