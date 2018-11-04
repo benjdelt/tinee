@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import '../css/App.css';
 import Paper from '@material-ui/core/Paper';
 import Navbar from './nav';
-import NavLogin from './nav-login';
+import NavAuth from './nav-auth';
 import Urls from './urls'
 import ShortenForm from './shorten-form'
 import Signup from './signup';
@@ -13,7 +13,7 @@ class App extends Component {
     return (
       <div>
         {/* <Navbar></Navbar> */}
-        <NavLogin></NavLogin>
+        <NavAuth></NavAuth>
         {/* <Paper elevation={3} style={{width: '85%', padding: 25, margin: "20px auto 0"}}>
           <ShortenForm></ShortenForm>
           <Urls></Urls>
