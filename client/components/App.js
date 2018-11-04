@@ -14,12 +14,11 @@ class App extends Component {
       <div>
         {/* <Navbar></Navbar> */}
         <NavAuth></NavAuth>
-        {/* <Paper elevation={3} style={{width: '85%', padding: 25, margin: "20px auto 0"}}>
+        <Paper elevation={3} style={{width: '85%', padding: 25, margin: "20px auto 0"}}>
           <ShortenForm></ShortenForm>
-          <Urls></Urls>
+          {/* <Urls></Urls> */}
           <Footer></Footer>
-        </Paper> */}
-          <Footer></Footer>        
+        </Paper>
       </div>
       // <div className="App">
       //   <header className="App-header">
