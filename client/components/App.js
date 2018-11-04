@@ -5,6 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import Navbar from './nav';
 import Urls from './urls'
 import ShortenForm from './shorten-form'
+import Signup from './signup';
 import Footer from './footer';
 class App extends Component {
   render() {
@@ -12,8 +13,9 @@ class App extends Component {
       <div>
         <Navbar></Navbar>
         <Paper elevation={3} style={{width: '85%', padding: 25, margin: "20px auto 0"}}>
-          <ShortenForm></ShortenForm>
-          <Urls></Urls>
+          {/* <ShortenForm></ShortenForm>
+          <Urls></Urls> */}
+          <Signup></Signup>
           <Footer></Footer>
         </Paper>
       </div>

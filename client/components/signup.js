@@ -9,27 +9,27 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
 
-const styles = theme => ({  // TODO: shortenForm width 100% and margin auto for children
+const styles = theme => ({
   container: {
     // display: 'flex',
     // flexWrap: 'wrap',
   },
   shortenForm: {
-    margin: '100px',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
+    width: '100%',
   },
   textField: {
-    marginLeft: theme.spacing.unit * 2,
-    marginRight: theme.spacing.unit * 2,
+    marginLeft: 'auto',
+    marginRight: 'auto',
     marginBottom: theme.spacing.unit * 2,
     width: 200,
     display: 'block',
   },
   searchButton: {
-    marginLeft: theme.spacing.unit * 2,
-    marginRight: theme.spacing.unit * 2,
+    marginLeft: 'auto',
+    marginRight: 'auto',
     width: 200,
     display: 'block',
   },
