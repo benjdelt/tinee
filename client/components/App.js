@@ -5,6 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import Navbar from './nav';
 import NavAuth from './nav-auth';
 import Urls from './urls'
+import UrlUnauth from './url-unauth';
 import ShortenForm from './shorten-form'
 import Signup from './signup';
 import Footer from './footer';
@@ -16,7 +17,8 @@ class App extends Component {
         <NavAuth></NavAuth>
         <Paper elevation={3} style={{width: '85%', padding: 25, margin: "20px auto 0"}}>
           <ShortenForm></ShortenForm>
-          <Urls></Urls>
+          {/* <Urls></Urls> */}
+          <UrlUnauth></UrlUnauth>
           <Footer></Footer>
         </Paper>
       </div>
