@@ -8,7 +8,6 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import TextField from '@material-ui/core/TextField';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 
 function Transition(props) {
@@ -16,35 +15,6 @@ function Transition(props) {
 }
 
 const styles = theme => ({
-  paper : {
-    visibility: 'hidden',
-    width: '40%', 
-    height: '100%', 
-    padding: 25, 
-    margin: "10px auto 0",
-    '@media (min-width: 1200px)': {
-      margin: "20px auto 0",
-      visibility: 'visible',
-    }
-  },
-  container: {
-    visibility: 'visible',
-    // display: 'flex',
-    // flexDirection: 'column',
-    // justifyContent: 'center',
-    // flexWrap: 'wrap',
-    '@media (min-width: 1200px)': {
-      marginTop: '150px',
-      marginBottom: '150px',
-    }
-  },
-  shortenForm: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    width: '100%',
-
-  },
   formText: {
     textAlign: 'center',
   },
