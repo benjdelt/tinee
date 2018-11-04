@@ -92,7 +92,7 @@ const styles = theme => ({
   }
 });
 
-function Navbar(props) {
+function NavLogin(props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
@@ -107,36 +107,37 @@ function Navbar(props) {
             Tinee
           </Typography>
           <div className={classes.grow} />
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
+          <form>
+            <div className={classes.search}>
+              <Input
+                placeholder="Email"
+                type="email"
+                disableUnderline
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+              />
+              <Input
+                placeholder="Password"
+                type="password"
+                disableUnderline
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+              />
             </div>
-            <Input
-              placeholder="Search…"
-              disableUnderline
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-            />
-          </div>
-          <Avatar
-            alt="JSmith"
-            src="https://randomuser.me/api/portraits/men/43.jpg"
-            className={classNames(classes.avatar, classes.bigAvatar, classes.notForMobile)}
-          />
-          <Typography  className={classes.greeting} variant="title" color="inherit" noWrap>
-             JSmith
-          </Typography>
-          <Button color="inherit">Log Out</Button>
+            <Button color="inherit">Log In</Button>
+          </form>
         </Toolbar>
       </AppBar>
     </div>
   );
 }
 
-Navbar.propTypes = {
+NavLogin.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Navbar);
+export default withStyles(styles)(NavLogin);
