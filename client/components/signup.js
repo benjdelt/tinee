@@ -1,39 +1,5 @@
-// <form className={classes.shortenForm}>
-//             <TextField
-//                 label = "Email" 
-//                 name = "email"
-//                 type= "email"
-//                 className={classes.textField}
-//                 // value={this.state.name}
-//                 // onChange={this.handleChange('name')}
-//                 margin="normal"
-//                 required
-//             />
-//             <TextField
-//                 label = "Password" 
-//                 name = "password"
-//                 type="password"
-//                 className={classes.textField}
-//                 // value={this.state.name}
-//                 // onChange={this.handleChange('name')}
-//                 margin="normal"
-//                 required
-//             />
-//             <TextField
-//                 label = "Confirm Password" 
-//                 name = "password-confirmation"
-//                 type="password"
-//                 className={classes.textField}
-//                 // value={this.state.name}
-//                 // onChange={this.handleChange('name')}
-//                 margin="normal"
-//                 required
-//             />
-//             <Button className={classes.searchButton}variant="contained" color="primary">Sign Up</Button>
-
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import Edit from '@material-ui/icons/Create';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -41,12 +7,58 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import TextField from '@material-ui/core/TextField';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { withStyles } from '@material-ui/core/styles';
 
 function Transition(props) {
   return <Slide direction="down" {...props} />;
 }
 
-class Signup extends React.Component {
+const styles = theme => ({
+  paper : {
+    visibility: 'hidden',
+    width: '40%', 
+    height: '100%', 
+    padding: 25, 
+    margin: "10px auto 0",
+    '@media (min-width: 1200px)': {
+      margin: "20px auto 0",
+      visibility: 'visible',
+    }
+  },
+  container: {
+    visibility: 'visible',
+    // display: 'flex',
+    // flexDirection: 'column',
+    // justifyContent: 'center',
+    // flexWrap: 'wrap',
+    '@media (min-width: 1200px)': {
+      marginTop: '150px',
+      marginBottom: '150px',
+    }
+  },
+  shortenForm: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    width: '100%',
+
+  },
+  formText: {
+    textAlign: 'center',
+  },
+  textField: {
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginBottom: theme.spacing.unit * 2,
+    width: 200,
+    display: 'block',
+  },
+});
+
+
+class SignUp extends React.Component {
   
   constructor (props) {
     super(props);
@@ -66,6 +78,9 @@ class Signup extends React.Component {
   };
 
   render() {
+
+    const { classes } = this.props;
+
     return (
       <span>
         <Button onClick={this.handleClickOpen} color="inherit">Sign Up</Button>
@@ -75,7 +90,7 @@ class Signup extends React.Component {
           keepMounted
           onClose={this.handleClose}
         >
-          <DialogTitle>
+          <DialogTitle className={classes.formText}>
             {"Sign Up"}
           </DialogTitle>
             <form>
@@ -85,7 +100,7 @@ class Signup extends React.Component {
                       label = "Email" 
                       name = "email"
                       type= "email"
-                      // className={classes.textField}
+                      className={classes.textField}
                       // value={this.state.name}
                       // onChange={this.handleChange('name')}
                       margin="normal"
@@ -95,7 +110,7 @@ class Signup extends React.Component {
                       label = "Password" 
                       name = "password"
                       type="password"
-                      // className={classes.textField}
+                      className={classes.textField}
                       // value={this.state.name}
                       // onChange={this.handleChange('name')}
                       margin="normal"
@@ -105,7 +120,7 @@ class Signup extends React.Component {
                       label = "Confirm Password" 
                       name = "password-confirmation"
                       type="password"
-                      // className={classes.textField}
+                      className={classes.textField}
                       // value={this.state.name}
                       // onChange={this.handleChange('name')}
                       margin="normal"
@@ -127,5 +142,8 @@ class Signup extends React.Component {
     );
   }
 }
+SignUp.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
-export default Signup;
+export default withStyles(styles)(SignUp);
