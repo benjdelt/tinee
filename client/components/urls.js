@@ -12,7 +12,6 @@ import {CopyToClipboard} from 'react-copy-to-clipboard';
 import CopyUrl from './copy-url';
 import EditUrl from './edit-url';
 import DeleteUrl from './delete-url';
-import { runInThisContext } from 'vm';
 
 
 const styles = theme => ({
@@ -42,11 +41,6 @@ class Urls extends Component {
             target='_blank'
           />
           <Button color="primary" variant="outlined" href="/abd123">/abd123</Button>
-          {/* <CopyToClipboard text="/abd123"
-          onCopy={() => this.setState({copied: true})}
-          >
-          <Button color="primary"><Copy/>Copy</Button>
-          </CopyToClipboard> */}
           <CopyUrl></CopyUrl>
           <EditUrl></EditUrl>
           <DeleteUrl></DeleteUrl>
@@ -60,12 +54,6 @@ class Urls extends Component {
             target='_blank'
           />
           <Button color="primary" variant="outlined" href="/abd123">/abd123</Button>
-          {/* <CopyToClipboard 
-            text="/abd123"
-            onCopy={() => this.setState({copied: true})}
-          >
-            <Button color="primary"><Copy/>Copy</Button>
-          </CopyToClipboard> */}
           <CopyUrl></CopyUrl>
           <EditUrl></EditUrl>
           <DeleteUrl></DeleteUrl>
@@ -79,12 +67,6 @@ class Urls extends Component {
             target='_blank'
           />
           <Button color="primary" variant="outlined" href="/abd123">/abd123</Button>
-          {/* <CopyToClipboard 
-            text="/abd123"
-            onCopy={() => this.setState({copied: true})}
-          >
-            <Button color="primary"><Copy/>Copy</Button>
-          </CopyToClipboard> */}
           <CopyUrl></CopyUrl>
           <EditUrl></EditUrl>
           <DeleteUrl></DeleteUrl>
