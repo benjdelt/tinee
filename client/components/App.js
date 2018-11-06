@@ -17,8 +17,8 @@ class App extends Component {
         <NavAuth></NavAuth>
         <Paper elevation={3} style={{width: '85%', padding: 25, margin: "20px auto 0"}}>
           <ShortenForm></ShortenForm>
-          <Urls></Urls>
-          {/* <UrlUnauth></UrlUnauth> */}
+          {/* <Urls></Urls> */}
+          <UrlUnauth></UrlUnauth>
           <Footer></Footer>
         </Paper>
       </div>

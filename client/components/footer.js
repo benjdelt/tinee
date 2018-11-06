@@ -3,7 +3,6 @@ import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import { linkSync } from 'fs';
 
 // TODO 
 // - Target _blank for links 
