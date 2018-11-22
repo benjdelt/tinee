@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -52,6 +53,10 @@ class ShortenForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
     console.log('value = ', this.state.value);
+    axios.post('/urls', {
+      longUrl: this.state.value,
+    })
+    this.setState({value: ''});
   }
 
   render() {
@@ -71,7 +76,7 @@ class ShortenForm extends Component {
                 onChange={this.handleChange}
                 margin="normal"
             />
-            <Button className={classes.searchButton}variant="contained" color="primary">Shorten</Button>
+            <Button type="submit" className={classes.searchButton}variant="contained" color="primary">Shorten</Button>
           </form>
         </Grid>
         <Grid item xs={0} sm={4}>
