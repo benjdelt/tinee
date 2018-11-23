@@ -52,10 +52,10 @@ class ShortenForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log('value = ', this.state.value);
+    // console.log('value = ', this.state.value);
     axios.post('/urls', {
       longUrl: this.state.value,
-    })
+    }).then(res => console.log(res))
     this.setState({value: ''});
   }
 

@@ -16,11 +16,11 @@ router.post('/urls/',(req, res) => {
   const url = new Url();
   url.shortVersion = makeId();
   url.longVersion = req.body.longUrl;
-  url.save(err => {
+  url.save((err, url) => {
     if (err) {
       res.send(err);
     }
-    res.status(201).send();
+    res.json(url);
   })
 })
 

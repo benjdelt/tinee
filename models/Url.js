@@ -9,7 +9,7 @@ const urlSchema = new Schema({
     ref: 'User',
   },
   createdAt: Date,
-  UpdatedAt: Date, 
+  updatedAt: Date, 
 })
 
 module.exports = mongoose.model('Url', urlSchema);
