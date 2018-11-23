@@ -3,7 +3,10 @@ const Schema = mongoose.Schema;
 
 const urlSchema = new Schema({
   longVersion: String,
-  shortVersion: String,
+  shortVersion: {
+    type: String,
+    unique: true,
+  },
   user_id: {
     type: Schema.Types.ObjectId, 
     ref: 'User',

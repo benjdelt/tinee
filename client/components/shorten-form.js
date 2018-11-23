@@ -55,7 +55,13 @@ class ShortenForm extends Component {
     // console.log('value = ', this.state.value);
     axios.post('/urls', {
       longUrl: this.state.value,
-    }).then(res => console.log(res))
+    }).then(res => {
+      if (res.data.name === "MongoError") {
+        console.log("Something went wrong, try again");
+      } else {
+        console.log(res);
+      }
+    })
     this.setState({value: ''});
   }
 
