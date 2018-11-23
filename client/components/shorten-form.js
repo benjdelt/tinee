@@ -53,10 +53,13 @@ class ShortenForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
     // console.log('value = ', this.state.value);
+    if (!this.state.value) {
+      console.log("Empty field!");
+    }
     axios.post('/urls', {
       longUrl: this.state.value,
     }).then(res => {
-      if (res.data.name === "MongoError") {
+      if (res.data.name === "MongoError" || res.data.errors) {
         console.log("Something went wrong, try again");
       } else {
         console.log(res);
