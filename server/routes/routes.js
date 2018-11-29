@@ -25,5 +25,15 @@ router.post('/urls/',(req, res) => {
   })
 })
 
+router.get('/u/:shortUrl', (req, res) => {
+  Url.findOne({shortVersion: req.params.shortUrl}, (err, entry) => {
+    if (err) {
+      console.error(err);
+    } else {
+      res.redirect(entry.longVersion);
+    }
+  })
+})
+
 
 module.exports = router;
