@@ -8,6 +8,7 @@ import Urls from './urls'
 import UrlUnauth from './url-unauth';
 import ShortenForm from './shorten-form'
 import Footer from './footer';
+import axios from 'axios';
 class App extends Component {
   constructor(props) {
     super(props);
