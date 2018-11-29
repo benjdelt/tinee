@@ -27,7 +27,9 @@ class UrlUnauth extends Component {
   
   render() {
     const { classes } = this.props;
+    console.log(this.props.longUrl);
     return (
+      this.props.longUrl ? (
       <Grid container spacing={24} justify="space-evenly">
 
         <Grid item xs={12} sm={6} md={4} className={classes.urlElement}>
@@ -36,11 +38,13 @@ class UrlUnauth extends Component {
   
           <Typography variant='caption'>Created OCT 29, 3:05 PM</Typography>
           <MicrolinkCard
-            url='https://www.theverge.com/tldr/2018/2/7/16984284/tesla-space-falcon-heavy-launch-elon-musk'
+            url={this.props.longUrl}
             target='_blank'
             size='large'
           />
-          <Button color="primary" variant="outlined" href="/abd123">/abd123</Button>
+          <Button color="primary" variant="outlined" href={'/u/' + this.props.shortUrl}>
+            /u/{this.props.shortUrl}
+          </Button>
           <CopyUrl></CopyUrl>
 
         </Grid>
@@ -48,6 +52,9 @@ class UrlUnauth extends Component {
         </Grid>
 
       </Grid>
+      ) : (
+        <div />
+      )
     )
   }
 }

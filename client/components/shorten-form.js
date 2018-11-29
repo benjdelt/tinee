@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
 
-const styles = theme => ({  // TODO: shortenForm width 100% and margin auto for children
+const styles = theme => ({  
   container: {
     // display: 'flex',
     // flexWrap: 'wrap',
@@ -52,7 +52,6 @@ class ShortenForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    // console.log('value = ', this.state.value);
     if (!this.state.value) {
       console.log("Empty field!");
     }
@@ -62,7 +61,7 @@ class ShortenForm extends Component {
       if (res.data.name === "MongoError" || res.data.errors) {
         console.log("Something went wrong, try again");
       } else {
-        console.log(res);
+        this.props.setUrlData(res.data);
       }
     })
     this.setState({value: ''});
