@@ -12,4 +12,4 @@ function makeid() {
   return text;
 }
 
-export default makeid;
+module.exports = makeid;

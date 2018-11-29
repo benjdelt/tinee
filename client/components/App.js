@@ -7,37 +7,51 @@ import NavAuth from './nav-auth';
 import Urls from './urls'
 import UrlUnauth from './url-unauth';
 import ShortenForm from './shorten-form'
-import Signup from './signup';
 import Footer from './footer';
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      longUrl: '',
+      shortUrl: '',
+      createdAt: '',
+    }
+    this.setUrlData = this.setUrlData.bind(this);
+  }
+
+  setUrlData(data) {
+    if (data) {
+      this.setState({
+        longUrl: data.longVersion,
+        shortUrl: data.shortVersion,
+        createdAt: data.createdAt,
+      })
+    } else {
+      this.setState({
+        longUrl: '',
+        shortUrl: '',
+        createdAt: '',
+      }) 
+    }
+  }
+
   render() {
     return (
       <div>
         {/* <Navbar></Navbar> */}
         <NavAuth></NavAuth>
         <Paper elevation={3} style={{width: '85%', padding: 25, margin: "20px auto 0"}}>
-          <ShortenForm></ShortenForm>
+          <ShortenForm setUrlData={this.setUrlData} ></ShortenForm>
           {/* <Urls></Urls> */}
-          <UrlUnauth></UrlUnauth>
+          <UrlUnauth 
+            longUrl={this.state.longUrl} 
+            shortUrl={this.state.shortUrl}
+            createdAt={this.state.createdAt}
+            >
+          </UrlUnauth>
           <Footer></Footer>
         </Paper>
       </div>
-      // <div className="App">
-      //   <header className="App-header">
-      //     {/* <img src={logo} className="App-logo" alt="logo" /> */}
-      //     <p>
-      //       Edit <code>src/App.js</code> and save to reload.
-      //     </p>
-      //     <a
-      //       className="App-link"
-      //       href="https://reactjs.org"
-      //       target="_blank"
-      //       rel="noopener noreferrer"
-      //     >
-      //       Learn React
-      //     </a>
-      //   </header>
-      // </div>
     );
   }
 }

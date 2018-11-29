@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -33,27 +33,36 @@ const styles = theme => ({
   },
 });
 
-function NavAuth(props) {
-  const { classes } = props;
-  return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <Avatar
-            alt="Tinee"
-            src="../images/logo.png"
-            className={classNames(classes.avatar, classes.bigAvatar)}
-          />
-          <Typography className={classes.title} variant="display1" color="inherit" noWrap>
-            Tinee
-          </Typography>
-          <div className={classes.grow} />
-            <SignUp></SignUp>
-            <LogIn></LogIn>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
+class NavAuth extends Component {
+
+  render() {
+    const { classes } = this.props;
+
+    return (
+      <div className={classes.root}>
+        <AppBar position="static">
+          <Toolbar>
+            <Avatar
+              alt="Tinee"
+              src="../images/logo.png"
+              className={classNames(classes.avatar, classes.bigAvatar)}
+            />
+            <Typography 
+              className={classes.title} 
+              variant="display1" 
+              color="inherit" 
+              noWrap
+            >
+              Tinee
+            </Typography>
+            <div className={classes.grow} />
+              <SignUp></SignUp>
+              <LogIn></LogIn>
+          </Toolbar>
+        </AppBar>
+      </div>
+    );
+  }
 }
 
 NavAuth.propTypes = {

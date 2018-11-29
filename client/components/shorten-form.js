@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -9,7 +10,7 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
 
-const styles = theme => ({  // TODO: shortenForm width 100% and margin auto for children
+const styles = theme => ({  
   container: {
     // display: 'flex',
     // flexWrap: 'wrap',
@@ -36,6 +37,38 @@ const styles = theme => ({  // TODO: shortenForm width 100% and margin auto for 
   },
 });
 class ShortenForm extends Component {
+  constructor (props) {
+    super(props);
+    this.state ={
+      value: '',
+    }
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.setUrlData();
+    if (!this.state.value) {
+      alert("Empty field!");
+      return;
+    }
+    axios.post('/urls', {
+      longUrl: this.state.value,
+    }).then(res => {
+      if (res.data.name === "MongoError" || res.data.errors) {
+        alert("Something went wrong, try again");
+      } else {
+        this.props.setUrlData(res.data);
+      }
+    })
+    this.setState({value: ''});
+  }
+
   render() {
     const { classes } = this.props;
 
@@ -44,16 +77,16 @@ class ShortenForm extends Component {
         <Grid item xs={0} sm={4}>
         </Grid>
         <Grid item xs={12} sm={4}>
-          <form className={classes.shortenForm}>
+          <form className={classes.shortenForm} onSubmit={this.handleSubmit}>
             <TextField
                 label = "Paste a link to shorten it" 
-                name = "longUrl"
+                name = "value"
                 className={classes.textField}
-                // value={this.state.name}
-                // onChange={this.handleChange('name')}
+                value={this.state.value}
+                onChange={this.handleChange}
                 margin="normal"
             />
-            <Button className={classes.searchButton}variant="contained" color="primary">Shorten</Button>
+            <Button type="submit" className={classes.searchButton}variant="contained" color="primary">Shorten</Button>
           </form>
         </Grid>
         <Grid item xs={0} sm={4}>

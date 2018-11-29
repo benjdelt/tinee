@@ -11,9 +11,8 @@ import CopyUrl from './copy-url';
 
 
 const styles = theme => ({
-  urlElement: {
-    // marginLeft: '20px',
-    // marginRight: '20px',
+  shortButton: {
+    textTransform: 'lowercase',
   },
 })
 
@@ -28,26 +27,34 @@ class UrlUnauth extends Component {
   render() {
     const { classes } = this.props;
     return (
+      this.props.longUrl ? (
       <Grid container spacing={24} justify="space-evenly">
-
-        <Grid item xs={12} sm={6} md={4} className={classes.urlElement}>
+        <Grid item xs={12} sm={6} md={4}>
         </Grid>
-        <Grid item xs={12} sm={6} md={4} className={classes.urlElement}>
-  
-          <Typography variant='caption'>Created OCT 29, 3:05 PM</Typography>
+        <Grid item xs={12} sm={6} md={4}>
+          <Typography variant='caption'>{this.props.createdAt}</Typography>
           <MicrolinkCard
-            url='https://www.theverge.com/tldr/2018/2/7/16984284/tesla-space-falcon-heavy-launch-elon-musk'
+            url={this.props.longUrl}
             target='_blank'
             size='large'
           />
-          <Button color="primary" variant="outlined" href="/abd123">/abd123</Button>
+          <Button 
+            color="primary" 
+            variant="outlined" 
+            href={'/u/' + this.props.shortUrl}
+            target='_blank'
+            className={classes.shortButton}
+          >
+            /u/{this.props.shortUrl}
+          </Button>
           <CopyUrl></CopyUrl>
-
         </Grid>
         <Grid item xs={12} sm={6} md={4} className={classes.urlElement}>
         </Grid>
-
       </Grid>
+      ) : (
+        <div />
+      )
     )
   }
 }
