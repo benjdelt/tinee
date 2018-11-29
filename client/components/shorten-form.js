@@ -54,13 +54,14 @@ class ShortenForm extends Component {
     event.preventDefault();
     this.props.setUrlData();
     if (!this.state.value) {
-      console.log("Empty field!");
+      alert("Empty field!");
+      return;
     }
     axios.post('/urls', {
       longUrl: this.state.value,
     }).then(res => {
       if (res.data.name === "MongoError" || res.data.errors) {
-        console.log("Something went wrong, try again");
+        alert("Something went wrong, try again");
       } else {
         this.props.setUrlData(res.data);
       }
