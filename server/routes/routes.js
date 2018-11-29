@@ -16,6 +16,7 @@ router.post('/urls/',(req, res) => {
   const url = new Url();
   url.shortVersion = makeId();
   url.longVersion = req.body.longUrl;
+  url.createdAt = new Date();
   url.save((err, url) => {
     if (err) {
       res.send(err);

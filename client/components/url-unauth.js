@@ -36,7 +36,7 @@ class UrlUnauth extends Component {
         </Grid>
         <Grid item xs={12} sm={6} md={4} className={classes.urlElement}>
   
-          <Typography variant='caption'>Created OCT 29, 3:05 PM</Typography>
+          <Typography variant='caption'>{this.props.createdAt}</Typography>
           <MicrolinkCard
             url={this.props.longUrl}
             target='_blank'

@@ -14,6 +14,7 @@ class App extends Component {
     this.state = {
       longUrl: '',
       shortUrl: '',
+      createdAt: '',
     }
     this.setUrlData = this.setUrlData.bind(this);
   }
@@ -22,6 +23,7 @@ class App extends Component {
     this.setState({
       longUrl: data.longVersion,
       shortUrl: data.shortVersion,
+      createdAt: data.createdAt,
     })
   }
 
@@ -33,7 +35,11 @@ class App extends Component {
         <Paper elevation={3} style={{width: '85%', padding: 25, margin: "20px auto 0"}}>
           <ShortenForm setUrlData={this.setUrlData} ></ShortenForm>
           {/* <Urls></Urls> */}
-          <UrlUnauth longUrl={this.state.longUrl} shortUrl={this.state.shortUrl}>
+          <UrlUnauth 
+            longUrl={this.state.longUrl} 
+            shortUrl={this.state.shortUrl}
+            createdAt={this.state.createdAt}
+            >
           </UrlUnauth>
           <Footer></Footer>
         </Paper>
