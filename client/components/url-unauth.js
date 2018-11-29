@@ -12,7 +12,7 @@ import CopyUrl from './copy-url';
 
 const styles = theme => ({
   shortButton: {
-    textTransform: 'lowercase',
+    textTransform: 'none',
   },
 })
 
