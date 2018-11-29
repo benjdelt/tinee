@@ -20,11 +20,19 @@ class App extends Component {
   }
 
   setUrlData(data) {
-    this.setState({
-      longUrl: data.longVersion,
-      shortUrl: data.shortVersion,
-      createdAt: data.createdAt,
-    })
+    if (data) {
+      this.setState({
+        longUrl: data.longVersion,
+        shortUrl: data.shortVersion,
+        createdAt: data.createdAt,
+      })
+    } else {
+      this.setState({
+        longUrl: '',
+        shortUrl: '',
+        createdAt: '',
+      }) 
+    }
   }
 
   render() {

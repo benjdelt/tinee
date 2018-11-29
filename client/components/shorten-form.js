@@ -52,6 +52,7 @@ class ShortenForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    this.props.setUrlData();
     if (!this.state.value) {
       console.log("Empty field!");
     }
