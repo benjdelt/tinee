@@ -15,7 +15,7 @@ class CopyUrl extends React.Component {
   render() {
     return (
       <CopyToClipboard 
-        text={'/u/' + this.props.shortUrl}
+        text={'http://localhost:8000/u/' + this.props.shortUrl}
         onCopy={() => this.setState({copied: true})}
       >
         <Button color="primary"><Copy/>Copy</Button>
