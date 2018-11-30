@@ -47,7 +47,7 @@ class UrlUnauth extends Component {
           >
             /u/{this.props.shortUrl}
           </Button>
-          <CopyUrl></CopyUrl>
+          <CopyUrl shortUrl={this.props.shortUrl}></CopyUrl>
         </Grid>
         <Grid item xs={12} sm={6} md={4} className={classes.urlElement}>
         </Grid>
