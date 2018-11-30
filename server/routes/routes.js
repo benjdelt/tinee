@@ -13,7 +13,9 @@ router.get('/', (req, res) => {
 })
 
 router.post('/urls/',(req, res) => {
-  Url.deleteMany({user_id: undefined}, err => console.error(err));
+  Url.deleteMany({user_id: undefined}, err => {
+    if (err) console.error(err)
+  });
   const url = new Url();
   url.shortVersion = makeId();
   url.longVersion = req.body.longUrl;
