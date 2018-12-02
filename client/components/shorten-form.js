@@ -41,6 +41,8 @@ class ShortenForm extends Component {
     super(props);
     this.state ={
       value: '',
+      label: 'Paste a link to shorten it', 
+      error: false,
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -54,19 +56,29 @@ class ShortenForm extends Component {
     event.preventDefault();
     this.props.setUrlData();
     if (!this.state.value) {
-      alert("Empty field!");
+      this.setState({
+        label: 'The field cannot be empty',
+        error: true
+      })
       return;
     }
     axios.post('/urls', {
       longUrl: this.state.value,
     }).then(res => {
       if (res.data.name === "MongoError" || res.data.errors) {
-        alert("Something went wrong, try again");
+        this.setState({
+          label: 'Something went wrong, please try again',
+          error: true
+        })
       } else {
         this.props.setUrlData(res.data);
+        this.setState({
+          value: '',
+          label: 'Paste a link to shorten it', 
+          error: false,
+        });
       }
     })
-    this.setState({value: ''});
   }
 
   render() {
@@ -79,7 +91,8 @@ class ShortenForm extends Component {
         <Grid item xs={12} sm={4}>
           <form className={classes.shortenForm} onSubmit={this.handleSubmit}>
             <TextField
-                label = "Paste a link to shorten it" 
+                label = {this.state.label}
+                error = {this.state.error} 
                 name = "value"
                 className={classes.textField}
                 value={this.state.value}
