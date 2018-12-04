@@ -10,6 +10,10 @@ import Slide from '@material-ui/core/Slide';
 import TextField from '@material-ui/core/TextField';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
+
 
 function Transition(props) {
   return <Slide direction="down" {...props} />;
@@ -26,6 +30,9 @@ const styles = theme => ({
     width: 200,
     display: 'block',
   },
+  SBClose: {
+    padding: theme.spacing.unit / 2,
+  },
 });
 
 
@@ -34,6 +41,7 @@ class SignUp extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
+      openSB: false,
       open: false,
       email: '',
       emailLabel: 'Email',
@@ -45,12 +53,26 @@ class SignUp extends React.Component {
       pwConfirmationLabel: 'Confirm Password',
       pwConfirmationError: false,
     };
+    this.handleOpenSB = this.handleOpenSB.bind(this);
+    this.handleCloseSB = this.handleCloseSB.bind(this);
     this.handleClickOpen = this.handleClickOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  
+
+  handleOpenSB = () => {
+    this.setState({ openSB: true });
+  };
+
+  handleCloseSB = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    this.setState({ openSB: false });
+  };
+
   handleClickOpen() {
     this.setState({ open: true });
   };
@@ -112,6 +134,8 @@ class SignUp extends React.Component {
     if (this.state.password !== this.state.pwConfirmation) {
       this.setState({
         password: '',
+        passwordLabel: "Passwords don't match",
+        passwordError: true,
         pwConfirmation: '',
         pwConfirmationLabel: "Passwords don't match",
         pwConfirmationError: true,
@@ -140,6 +164,7 @@ class SignUp extends React.Component {
           pwConfirmationError: false,
         })
         this.handleClose();
+        this.handleOpenSB();
         console.log(res)
 
       }
@@ -151,7 +176,7 @@ class SignUp extends React.Component {
     const { classes } = this.props;
 
     return (
-      <span>
+      <div>
         <Button onClick={this.handleClickOpen} color="inherit">Sign Up</Button>
         <Dialog
           open={this.state.open}
@@ -210,7 +235,33 @@ class SignUp extends React.Component {
               </DialogActions>
             </form>  
         </Dialog>
-      </span>
+        <Snackbar
+          className={classes.success}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          open={this.state.openSB}
+          autoHideDuration={6000}
+          onClose={this.handleCloseSB}
+          ContentProps={{
+            'aria-describedby': 'message-id',
+          }}
+          message={<span id="message-id">Account Created!</span>}
+          action={[
+            <IconButton
+              key="close"
+              aria-label="Close"
+              className={classes.SBClose}
+              onClick={this.handleCloseSB}
+            >
+              <CloseIcon 
+                color="secondary"
+              />
+            </IconButton>,
+          ]}
+        />
+      </div>
     );
   }
 }
