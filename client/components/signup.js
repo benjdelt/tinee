@@ -36,7 +36,11 @@ class SignUp extends React.Component {
     this.state = {
       open: false,
       email: '',
+      emailLabel: 'Email',
+      emailError: false,
       password: '',
+      passwordLabel: 'Password',
+      passwordError: false,
       pwConfirmation: '',
       pwConfirmationLabel: 'Confirm Password',
       pwConfirmationError: false,
@@ -61,11 +65,34 @@ class SignUp extends React.Component {
     })
   }
 
+  checkEmpty(field, value) {
+    if(!value) {
+      this.setState({
+        [field]: '',
+        [field + 'Label']: 'Cannot be Empty',
+        [field + 'Error']: true,
+      })
+      return true;
+    }
+    let label = field;
+    if(field === 'pwConfirmation') {
+      label = "Password Confirmation"
+    }
+    this.setState({
+      [field + 'Label']: label,
+      [field + 'Error']: false,
+    })
+    return false;
+  }
+
   handleSubmit(event) {
     event.preventDefault();
     // console.log('email', this.state.email);
     // console.log('pw', this.state.password);
     // console.log('pwc', this.state.pwConfirmation);
+    if (this.checkEmpty('email', this.state.email) || this.checkEmpty('password', this.state.password) || this.checkEmpty('pwConfirmation', this.state.pwConfirmation)) {
+      return;
+    }
     if (this.state.password !== this.state.pwConfirmation) {
       console.log('Password and confirmation must match');
       this.setState({
@@ -82,10 +109,14 @@ class SignUp extends React.Component {
     }).then(res => console.log(res));
     this.setState({
       email: '',
+      emailLabel: 'Email',
+      emailError: false,
       password: '',
+      passwordLabel: 'Password',
+      passwordError: false,
       pwConfirmation: '',
       pwConfirmationLabel: 'Confirm Password',
-      pwConfirmationError: true,
+      pwConfirmationError: false,
     })
     this.handleClose();
   }
@@ -110,22 +141,24 @@ class SignUp extends React.Component {
               <DialogContent>
                 <DialogContentText>
                   <TextField
-                      label = "Email" 
+                      label = {this.state.emailLabel}
                       name = "email"
                       type= "email"
                       className={classes.textField}
                       onChange={this.handleChange}
                       margin="normal"
                       required
+                      error={this.state.emailError}
                   />
                   <TextField
-                      label = "Password" 
+                      label = {this.state.passwordLabel}
                       name = "password"
                       type="password"
                       className={classes.textField}
                       onChange={this.handleChange}
                       margin="normal"
                       required
+                      error={this.state.passwordError}
                   />
                   <TextField
                       label = {this.state.pwConfirmationLabel} 
