@@ -38,6 +38,8 @@ class SignUp extends React.Component {
       email: '',
       password: '',
       pwConfirmation: '',
+      pwConfirmationLabel: 'Confirm Password',
+      pwConfirmationError: false,
     };
     this.handleClickOpen = this.handleClickOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
@@ -61,9 +63,30 @@ class SignUp extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log('email', this.state.email);
-    console.log('pw', this.state.password);
-    console.log('pwc', this.state.pwConfirmation);
+    // console.log('email', this.state.email);
+    // console.log('pw', this.state.password);
+    // console.log('pwc', this.state.pwConfirmation);
+    if (this.state.password !== this.state.pwConfirmation) {
+      console.log('Password and confirmation must match');
+      this.setState({
+        password: '',
+        pwConfirmation: '',
+        pwConfirmationLabel: "Passwords don't match",
+        pwConfirmationError: true,
+      })
+      return;
+    }
+    axios.post('/users', {
+      email: this.state.email,
+      password: this.state.password,
+    })
+    this.setState({
+      email: '',
+      password: '',
+      pwConfirmation: '',
+      pwConfirmationLabel: 'Confirm Password',
+      pwConfirmationError: true,
+    })
     this.handleClose();
   }
 
@@ -91,7 +114,6 @@ class SignUp extends React.Component {
                       name = "email"
                       type= "email"
                       className={classes.textField}
-                      // value={this.state.name}
                       onChange={this.handleChange}
                       margin="normal"
                       required
@@ -101,22 +123,19 @@ class SignUp extends React.Component {
                       name = "password"
                       type="password"
                       className={classes.textField}
-                      // value={this.state.name}
                       onChange={this.handleChange}
-                      // onChange={this.handleChange('name')}
                       margin="normal"
                       required
                   />
                   <TextField
-                      label = "Confirm Password" 
+                      label = {this.state.pwConfirmationLabel} 
                       name = "pwConfirmation"
                       type="password"
                       className={classes.textField}
-                      // value={this.state.name}
                       onChange={this.handleChange}
-                      // onChange={this.handleChange('name')}
                       margin="normal"
                       required
+                      error={this.state.pwConfirmationError}
                   />
                 </DialogContentText>
               </DialogContent>
