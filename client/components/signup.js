@@ -121,19 +121,29 @@ class SignUp extends React.Component {
     axios.post('/users', {
       email: this.state.email,
       password: this.state.password,
-    }).then(res => console.log(res));
-    this.setState({
-      email: '',
-      emailLabel: 'Email',
-      emailError: false,
-      password: '',
-      passwordLabel: 'Password',
-      passwordError: false,
-      pwConfirmation: '',
-      pwConfirmationLabel: 'Confirm Password',
-      pwConfirmationError: false,
+    }).then(res => {
+      if (res.data.errmsg && res.data.errmsg.includes('duplicate')) {
+        this.setState({
+          emailLabel: "Email already used",
+          emailError: true,
+        })
+      } else {
+        this.setState({
+          email: '',
+          emailLabel: 'Email',
+          emailError: false,
+          password: '',
+          passwordLabel: 'Password',
+          passwordError: false,
+          pwConfirmation: '',
+          pwConfirmationLabel: 'Confirm Password',
+          pwConfirmationError: false,
+        })
+        this.handleClose();
+        console.log(res)
+
+      }
     })
-    this.handleClose();
   }
 
   render() {
