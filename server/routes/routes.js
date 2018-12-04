@@ -40,9 +40,11 @@ router.get('/u/:shortUrl', (req, res) => {
 })
 
 router.post('/users', (req, res) => {
+  if (!req.body.password.trim()) {
+    res.status(403).send('Empty Password');
+  }
   const user = new User();
   user.email = req.body.email;
-  console.log('pw:', req.body.password);
   user.passwordDigest = bcrypt.hashSync(req.body.password, 10);
   user.save((err, user) => {
     if(err) {

@@ -66,7 +66,7 @@ class SignUp extends React.Component {
   }
 
   checkEmpty(field, value) {
-    if(!value) {
+    if(!value.trim()) {
       this.setState({
         [field]: '',
         [field + 'Label']: 'Cannot be Empty',
@@ -85,16 +85,31 @@ class SignUp extends React.Component {
     return false;
   }
 
+  checkEmailFormat(value) {
+    if (!value.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+      this.setState({
+        emailLabel: 'Invalid Email Format',
+        emailError: true,
+      })
+      return false;
+    } 
+    this.setState({
+      emailLabel: 'Email',
+      emailError: false,
+    })
+    return true;
+  }
+
   handleSubmit(event) {
     event.preventDefault();
-    // console.log('email', this.state.email);
-    // console.log('pw', this.state.password);
-    // console.log('pwc', this.state.pwConfirmation);
-    if (this.checkEmpty('email', this.state.email) || this.checkEmpty('password', this.state.password) || this.checkEmpty('pwConfirmation', this.state.pwConfirmation)) {
+    if(!this.checkEmailFormat(this.state.email)) {
       return;
     }
+    if (this.checkEmpty('password', this.state.password) || this.checkEmpty('pwConfirmation', this.state.pwConfirmation)) {
+      return;
+    }
+    
     if (this.state.password !== this.state.pwConfirmation) {
-      console.log('Password and confirmation must match');
       this.setState({
         password: '',
         pwConfirmation: '',
@@ -145,6 +160,7 @@ class SignUp extends React.Component {
                       name = "email"
                       type= "email"
                       className={classes.textField}
+                      value={this.state.email}
                       onChange={this.handleChange}
                       margin="normal"
                       required
@@ -155,6 +171,7 @@ class SignUp extends React.Component {
                       name = "password"
                       type="password"
                       className={classes.textField}
+                      value={this.state.password}
                       onChange={this.handleChange}
                       margin="normal"
                       required
@@ -165,6 +182,7 @@ class SignUp extends React.Component {
                       name = "pwConfirmation"
                       type="password"
                       className={classes.textField}
+                      value={this.state.pwConfirmation}
                       onChange={this.handleChange}
                       margin="normal"
                       required
