@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
 const mongoose = require("mongoose");
+const bcrypt = require('bcrypt');
 
 const User = require('../../models/User');
 const Url = require('../../models/Url');
@@ -35,6 +36,21 @@ router.get('/u/:shortUrl', (req, res) => {
     } else {
       res.redirect(entry.longVersion);
     }
+  })
+})
+
+router.post('/users', (req, res) => {
+  if (!req.body.password.trim()) {
+    res.status(403).send('Empty Password');
+  }
+  const user = new User();
+  user.email = req.body.email;
+  user.passwordDigest = bcrypt.hashSync(req.body.password, 10);
+  user.save((err, user) => {
+    if(err) {
+      res.send(err);
+    }
+    res.json(user);
   })
 })
 

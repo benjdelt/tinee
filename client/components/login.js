@@ -61,7 +61,7 @@ class LogIn extends React.Component {
           onClose={this.handleClose}
         >
           <DialogTitle className={classes.formText}>
-            {"Log In"}
+            Log In
           </DialogTitle>
             <form>
               <DialogContent>

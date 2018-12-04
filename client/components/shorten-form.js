@@ -65,7 +65,7 @@ class ShortenForm extends Component {
     axios.post('/urls', {
       longUrl: this.state.value,
     }).then(res => {
-      if (res.data.name === "MongoError" || res.data.errors) {
+      if (res.data.name === "MongoError" || res.data.errors) { // TODO: separate in 2 errors
         this.setState({
           label: 'Something went wrong, please try again',
           error: true
