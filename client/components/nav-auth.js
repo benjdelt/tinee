@@ -55,9 +55,9 @@ class NavAuth extends Component {
             >
               Tinee
             </Typography>
-            {/* <div className={classes.grow} />
+            <div className={classes.grow} />
               <SignUp></SignUp>
-              <LogIn></LogIn> */}
+              <LogIn></LogIn>
           </Toolbar>
         </AppBar>
       </div>
