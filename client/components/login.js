@@ -34,26 +34,83 @@ class LogIn extends React.Component {
     super(props);
     this.state = {
       open: false,
+      email: '',
+      emailLabel: 'Email',
+      emailError: false,
+      password: '',
+      passwordLabel: 'Password',
+      passwordError: false,
     };
-    // this.handleClickOpen = this.handleClickOpen.bind(this);
-    // this.handleClickClose = this.handleClickClose.bind(this);
+    this.handleOpen = this.handleOpen.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   
-  handleClickOpen = () => {
+  handleOpen() {
     this.setState({ open: true });
   };
 
-  handleClose = () => {
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value,
+    })
+  }
+
+  handleClose() {
     this.setState({ open: false });
   };
 
+  checkEmpty(field, value) {
+    if(!value.trim()) {
+      this.setState({
+        [field]: '',
+        [field + 'Label']: 'Cannot be Empty',
+        [field + 'Error']: true,
+      })
+      return true;
+    }
+    let label = field;
+    this.setState({
+      [field + 'Label']: label,
+      [field + 'Error']: false,
+    })
+    return false;
+  }
+
+  checkEmailFormat(value) {
+    if (!value.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+      this.setState({
+        emailLabel: 'Invalid Email Format',
+        emailError: true,
+      })
+      return false;
+    } 
+    this.setState({
+      emailLabel: 'Email',
+      emailError: false,
+    })
+    return true;
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    if(!this.checkEmailFormat(this.state.email)) {
+      return;
+    }
+    if (this.checkEmpty('password', this.state.password)) {
+      return;
+    }
+
+  }
+ 
   render() {
 
     const { classes } = this.props;
 
     return (
       <span>
-        <Button onClick={this.handleClickOpen} color="inherit">Log In</Button>
+        <Button onClick={this.handleOpen} color="inherit">Log In</Button>
         <Dialog
           open={this.state.open}
           TransitionComponent={Transition}
@@ -67,24 +124,26 @@ class LogIn extends React.Component {
               <DialogContent>
                 <DialogContentText>
                   <TextField
-                      label = "Email" 
+                      label = {this.state.emailLabel}
                       name = "email"
                       type= "email"
                       className={classes.textField}
-                      // value={this.state.name}
-                      // onChange={this.handleChange('name')}
+                      value={this.state.email}
+                      onChange={this.handleChange}
                       margin="normal"
                       required
+                      error={this.state.emailError}
                   />
                   <TextField
-                      label = "Password" 
+                      label = {this.state.passwordLabel}
                       name = "password"
                       type="password"
                       className={classes.textField}
-                      // value={this.state.name}
-                      // onChange={this.handleChange('name')}
+                      value={this.state.password}
+                      onChange={this.handleChange}
                       margin="normal"
                       required
+                      error={this.state.passwordError}
                   />
                 </DialogContentText>
               </DialogContent>
@@ -92,7 +151,7 @@ class LogIn extends React.Component {
                 <Button onClick={this.handleClose} color="inherit">
                   Cancel
                 </Button>
-                <Button type="submit" onClick={this.handleClose} color="primary">
+                <Button type="submit" onClick={this.handleSubmit} color="primary">
                   Log In
                 </Button>
               </DialogActions>
