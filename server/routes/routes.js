@@ -24,8 +24,9 @@ router.post('/urls/',(req, res) => {
   url.save((err, url) => {
     if (err) {
       res.send(err);
+    } else {
+      res.json(url);
     }
-    res.json(url);
   })
 })
 
@@ -49,8 +50,24 @@ router.post('/users', (req, res) => {
   user.save((err, user) => {
     if(err) {
       res.send(err);
+    } else {
+      res.json(user);
     }
-    res.json(user);
+  })
+})
+
+router.post('/users/sessions', (req, res) => {
+  if (!req.body.password.trim()) {
+    res.status(403).send('Empty Password');
+  }
+  User.findOne({email: req.body.email}, (err, user) => {
+    if (err) {
+      res.send(err);
+    } else if (!user || !bcrypt.compareSync(req.body.password, user.passwordDigest)) {
+      res.send("Invalid Credentials")
+    } else {
+      res.json(user);
+    }
   })
 })
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -101,7 +102,10 @@ class LogIn extends React.Component {
     if (this.checkEmpty('password', this.state.password)) {
       return;
     }
-
+    axios.post('users/sessions', {
+      email: this.state.email,
+      password: this.state.password
+    }).then(res => console.log(res));
   }
  
   render() {
