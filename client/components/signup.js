@@ -165,8 +165,6 @@ class SignUp extends React.Component {
         })
         this.handleClose();
         this.handleOpenSB();
-        console.log(res)
-
       }
     })
   }
