@@ -1,8 +1,6 @@
 const express = require('express');
 const router = require('./routes/routes.js');
 const path = require('path');
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
 
 require('dotenv').config();
 
@@ -11,9 +9,20 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '../client'));
 app.use(express.static(path.join(__dirname, '../client')));
+
+const bodyParser = require('body-parser');
+
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: false}));
 
+const cookieSession = require('cookie-session');
+
+app.use(cookieSession({
+  name: 'session',
+  keys: ['pepperoni', 'pizza']
+}));
+
+const mongoose = require('mongoose');
 const user = process.env.DB_USER;
 const pw = process.env.DB_PASSWORD;
 

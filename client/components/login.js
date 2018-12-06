@@ -105,7 +105,26 @@ class LogIn extends React.Component {
     axios.post('users/sessions', {
       email: this.state.email,
       password: this.state.password
-    }).then(res => console.log(res));
+    }).then(res => {
+      if (res.data === 'Invalid Credentials') {
+        this.setState({
+          emailLabel: 'Invalid Credentials',
+          emailError: true,
+          passwordLabel: 'Invalid Credentials',
+          passwordError: true
+        })
+      } else {
+        this.setState({
+          email: '',
+          emailLabel: 'Email',
+          emailError: false,
+          password: '',
+          passwordLabel: 'Password',
+          passwordError: false
+        })
+        this.handleClose();
+      }
+    });
   }
  
   render() {

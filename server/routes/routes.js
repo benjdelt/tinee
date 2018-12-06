@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const bodyParser = require('body-parser');
-const mongoose = require("mongoose");
+// const bodyParser = require('body-parser');
+// const mongoose = require("mongoose");
 const bcrypt = require('bcrypt');
 
 const User = require('../../models/User');
@@ -66,7 +66,8 @@ router.post('/users/sessions', (req, res) => {
     } else if (!user || !bcrypt.compareSync(req.body.password, user.passwordDigest)) {
       res.send("Invalid Credentials")
     } else {
-      res.json(user);
+      req.session.userId = user._id
+      res.json(user._id);
     }
   })
 })
