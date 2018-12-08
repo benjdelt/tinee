@@ -70,5 +70,11 @@ router.post('/users/sessions', (req, res) => {
   })
 })
 
+router.get('/users/sessions/', (req, res) => {
+  if(req.session.userId) {
+    res.json(req.session.userId)
+  }
+})
+
 
 module.exports = router;

@@ -57,7 +57,7 @@ class NavAuth extends Component {
             </Typography>
             <div className={classes.grow} />
               <SignUp></SignUp>
-              <LogIn></LogIn>
+              <LogIn setUserId={this.props.setUserId}></LogIn>
           </Toolbar>
         </AppBar>
       </div>

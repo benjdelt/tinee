@@ -13,12 +13,18 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      userId: '',
       longUrl: '',
       shortUrl: '',
       createdAt: '',
     }
     this.setUrlData = this.setUrlData.bind(this);
+    this.setUserId = this.setUserId.bind(this);
   }
+
+  setUserId(userId) {
+    this.setState({userId: userId});
+  } 
 
   setUrlData(data) {
     if (data) {
@@ -36,22 +42,36 @@ class App extends Component {
     }
   }
 
+  componentDidMount() {
+    axios.get('/users/sessions')
+      .then(res => {
+        this.setState({userId: res.data})
+      })
+  }
+
   render() {
     return (
       <div>
-        {/* <Navbar></Navbar> */}
-        <NavAuth></NavAuth>
-        <Paper elevation={3} style={{width: '85%', padding: 25, margin: "20px auto 0"}}>
-          <ShortenForm setUrlData={this.setUrlData} ></ShortenForm>
-          {/* <Urls></Urls> */}
-          <UrlUnauth 
-            longUrl={this.state.longUrl} 
-            shortUrl={this.state.shortUrl}
-            createdAt={this.state.createdAt}
-            >
-          </UrlUnauth>
-          <Footer></Footer>
-        </Paper>
+        {
+          this.state.userId ?
+            <Navbar />
+            :
+            <NavAuth setUserId={this.setUserId} />
+        }
+        {/* <Paper elevation={3} style={{width: '85%', padding: 25, margin: "20px auto 0"}}> */}
+          <ShortenForm setUrlData={this.setUrlData} />
+          {
+            this.state.userId ?
+              <Urls />
+              :
+              <UrlUnauth 
+                longUrl={this.state.longUrl} 
+                shortUrl={this.state.shortUrl}
+                createdAt={this.state.createdAt}
+              />
+          }
+          <Footer />
+        {/* </Paper> */}
       </div>
     );
   }
