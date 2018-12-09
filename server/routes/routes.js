@@ -72,7 +72,17 @@ router.post('/users/sessions', (req, res) => {
 
 router.get('/users/sessions/', (req, res) => {
   if(req.session.userId) {
-    res.json(req.session.userId)
+    User.findById(req.session.userId, (err, user) => {
+      if(err) {
+        console.error(err);
+      }
+      res.json({
+        userId: user._id,
+        email: user.email
+      });
+    }) 
+  } else  {
+    res.json({userId: ''});
   }
 })
 

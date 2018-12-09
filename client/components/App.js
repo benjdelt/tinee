@@ -45,7 +45,7 @@ class App extends Component {
   componentDidMount() {
     axios.get('/users/sessions')
       .then(res => {
-        this.setState({userId: res.data})
+        this.setState({userId: res.data.userId})
       })
   }
 
@@ -54,11 +54,10 @@ class App extends Component {
       <div>
         {
           this.state.userId ?
-            <Navbar />
+            <Navbar userId={this.state.userId}/>
             :
             <NavAuth setUserId={this.setUserId} />
         }
-        {/* <Paper elevation={3} style={{width: '85%', padding: 25, margin: "20px auto 0"}}> */}
           <ShortenForm setUrlData={this.setUrlData} />
           {
             this.state.userId ?
@@ -71,7 +70,6 @@ class App extends Component {
               />
           }
           <Footer />
-        {/* </Paper> */}
       </div>
     );
   }
