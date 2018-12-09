@@ -35,9 +35,19 @@ class Urls extends Component {
     }
   }
 
-  componentDidMount() {
+  getUrls() {
     axios.get('/urls')
       .then(res => this.setState({ urls: res.data }));
+  }
+
+  componentDidMount() {
+    this.getUrls();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.newUrl) {
+      this.getUrls();
+    }
   }
   
   render() {

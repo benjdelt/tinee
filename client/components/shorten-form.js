@@ -91,15 +91,22 @@ class ShortenForm extends Component {
         <Grid item xs={12} sm={4}>
           <form className={classes.shortenForm} onSubmit={this.handleSubmit}>
             <TextField
-                label = {this.state.label}
-                error = {this.state.error} 
-                name = "value"
-                className={classes.textField}
-                value={this.state.value}
-                onChange={this.handleChange}
-                margin="normal"
+              label = {this.state.label}
+              error = {this.state.error} 
+              name = "value"
+              className={classes.textField}
+              value={this.state.value}
+              onChange={this.handleChange}
+              margin="normal"
             />
-            <Button type="submit" className={classes.searchButton}variant="contained" color="primary">Shorten</Button>
+            <Button 
+              type="submit" 
+              className={classes.searchButton} 
+              variant="contained" 
+              color="primary"
+            >
+              Shorten
+            </Button>
           </form>
         </Grid>
         <Grid item xs={0} sm={4}>
