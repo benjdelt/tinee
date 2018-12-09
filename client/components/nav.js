@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -9,7 +9,9 @@ import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import classNames from 'classnames';
+import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
+import axios from 'axios';
 
 const styles = theme => ({
   root: {
@@ -92,47 +94,70 @@ const styles = theme => ({
   }
 });
 
-function Navbar(props) {
-  const { classes } = props;
-  return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <Avatar
-            alt="Tinee"
-            src="../images/logo.png"
-            className={classNames(classes.avatar, classes.bigAvatar)}
-          />
-          <Typography className={classes.title} variant="display1" color="inherit" noWrap>
-            Tinee
-          </Typography>
-          <div className={classes.grow} />
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <Input
-              placeholder="Search…"
-              disableUnderline
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
+class Navbar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+    }
+  }
+
+  handleClick = () => {
+    axios.post('users/sessions')
+      .then(() => this.props.setUserId(''))
+  }
+
+  componentDidMount() {
+    axios.get('users/sessions', {
+      userId: this.props.Userid
+    }).then(res => this.setState({email: res.data.email}))
+  }
+
+  render() {
+    const { classes } = this.props;
+
+    return (
+      <div className={classes.root}>
+        <AppBar position="static">
+          <Toolbar>
+            <Avatar
+              alt="Tinee"
+              src="../images/logo.png"
+              className={classNames(classes.avatar, classes.bigAvatar)}
             />
-          </div>
-          <Avatar
-            alt="JSmith"
-            src="https://randomuser.me/api/portraits/men/43.jpg"
-            className={classNames(classes.avatar, classes.bigAvatar, classes.notForMobile)}
-          />
-          <Typography  className={classes.greeting} variant="title" color="inherit" noWrap>
-             JSmith
-          </Typography>
-          <Button color="inherit">Log Out</Button>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
+            <Typography className={classes.title} variant="display1" color="inherit" noWrap>
+              Tinee
+            </Typography>
+            <div className={classes.grow} />
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+              <Input
+                placeholder="Search…"
+                disableUnderline
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+              />
+            </div>
+              {/* <Avatar
+                // alt="JSmith"
+                // src="https://randomuser.me/api/portraits/men/43.jpg"
+                className={classNames( classes.bigAvatar, classes.notForMobile)}
+              >
+                J
+              </Avatar> */}
+            <Typography  className={classes.greeting} variant="title" color="inherit" noWrap>
+              {this.state.email}
+            </Typography>
+            <Button color="inherit" onClick={this.handleClick}>Log Out</Button>
+          </Toolbar>
+        </AppBar>
+      </div>
+    );
+  }
 }
 
 Navbar.propTypes = {

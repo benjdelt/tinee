@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import { withStyles, MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
+import axios from 'axios';
 
 import CopyUrl from './copy-url';
 import EditUrl from './edit-url';
@@ -15,9 +16,8 @@ import DeleteUrl from './delete-url';
 
 
 const styles = theme => ({
-  urlElement: {
-    // marginLeft: '20px',
-    // marginRight: '20px',
+  shortButton: {
+    textTransform: 'none',
   },
 })
 
@@ -28,67 +28,47 @@ const styles = theme => ({
 // });
 
 class Urls extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      urls: [],
+    }
+  }
+
+  componentDidMount() {
+    axios.get('/urls')
+      .then(res => this.setState({ urls: res.data }));
+  }
   
   render() {
     const { classes } = this.props;
     return (
       <Grid container spacing={24} justify="space-evenly">
-        <Grid item xs={12} sm={6} md={4} className={classes.urlElement}>
-  
-          <Typography variant='caption'>Created OCT 29, 3:05 PM</Typography>
-          <MicrolinkCard
-            url='https://www.theverge.com/tldr/2018/2/7/16984284/tesla-space-falcon-heavy-launch-elon-musk'
-            target='_blank'
-          />
-          <Button color="primary" variant="outlined" href="/abd123">/abd123</Button>
-          <CopyUrl></CopyUrl>
-          <EditUrl></EditUrl>
-          <DeleteUrl></DeleteUrl>
-        </Grid>
-           
-        <Grid item xs={12} sm={6} md={4}>
+        {this.state.urls.map(url => {
+          return (
+            <Grid key={url._id} item xs={12} sm={6} md={4}>
+      
+              <Typography variant='caption'>{url.createdAt}</Typography>
+              <MicrolinkCard
+                url={url.longVersion}
+                target='_blank'
+              />
+              <Button 
+                color="primary" 
+                variant="outlined"
+                className={classes.shortButton}
+                href={'/u/' + url.shortVersion}
+                target="_blank"
+              >
+                /u/{url.shortVersion}
+              </Button>
+              <CopyUrl shortUrl={url.shortVersion}></CopyUrl>
+              <EditUrl></EditUrl>
+              <DeleteUrl></DeleteUrl>
+            </Grid>
+          )
 
-          <Typography variant='caption'>Created OCT 29, 3:05 PM</Typography>
-          <MicrolinkCard 
-            url='https://medium.freecodecamp.org/learning-python-from-zero-to-hero-120ea540b567?fbclid=IwAR1GY8Y7RcG0uK_wuPuFhmqV6xV82wupRqh5GQ5NPKd8GDsTkD3KrDuex9E'
-            target='_blank'
-          />
-          <Button color="primary" variant="outlined" href="/abd123">/abd123</Button>
-          <CopyUrl></CopyUrl>
-          <EditUrl></EditUrl>
-          <DeleteUrl></DeleteUrl>
-        </Grid>
-
-        <Grid item xs={12} sm={6} md={4}>
-  
-          <Typography variant='caption'>Created OCT 29, 3:05 PM</Typography>
-          <MicrolinkCard
-            url='https://docs.mongodb.com/manual/mongo/'
-            target='_blank'
-          />
-          <Button color="primary" variant="outlined" href="/abd123">/abd123</Button>
-          <CopyUrl></CopyUrl>
-          <EditUrl></EditUrl>
-          <DeleteUrl></DeleteUrl>
-        </Grid>
-
-        <Grid item xs={12} sm={6} md={4}>
-
-          <Typography variant='caption'>Created OCT 29, 3:05 PM</Typography>
-          <MicrolinkCard
-            url='https://blog.cloudboost.io/creating-your-first-mern-stack-application-b6604d12e4d3'
-            target='_blank'
-          />
-          <Button color="primary" variant="outlined" href="/abd123">/abd123</Button>
-          <CopyToClipboard 
-            text="/abd123"
-            onCopy={() => this.setState({copied: true})}
-          >
-            <Button color="primary"><Copy/>Copy</Button>
-          </CopyToClipboard>
-          <EditUrl></EditUrl>
-          <DeleteUrl></DeleteUrl>
-        </Grid>
+        })}
         
       </Grid>
     )

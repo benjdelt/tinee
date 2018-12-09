@@ -122,6 +122,7 @@ class LogIn extends React.Component {
           passwordLabel: 'Password',
           passwordError: false
         })
+        this.props.setUserId(res.data)
         this.handleClose();
       }
     });
