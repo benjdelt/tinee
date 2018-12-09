@@ -16,6 +16,9 @@ router.post('/urls/',(req, res) => {
     if (err) console.error(err)
   });
   const url = new Url();
+  if (req.session.userId) {
+    url.user_id = req.session.userId;
+  }
   url.shortVersion = makeId();
   url.longVersion = req.body.longUrl;
   url.createdAt = new Date();
@@ -25,6 +28,15 @@ router.post('/urls/',(req, res) => {
     } else {
       res.json(url);
     }
+  })
+})
+
+router.get('/urls/', (req, res) => {
+  Url.find({ user_id: req.session.userId }, (err, urls) =>{
+    if(err) {
+      console.error(err)
+    }
+    res.json(urls);
   })
 })
 

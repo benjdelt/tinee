@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import { withStyles, MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
+import axios from 'axios';
 
 import CopyUrl from './copy-url';
 import EditUrl from './edit-url';
@@ -28,6 +29,11 @@ const styles = theme => ({
 // });
 
 class Urls extends Component {
+
+  componentDidMount() {
+    axios.get('/urls')
+      .then(res => console.log(res));
+  }
   
   render() {
     const { classes } = this.props;
