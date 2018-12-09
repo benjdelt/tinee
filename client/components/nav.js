@@ -102,6 +102,11 @@ class Navbar extends Component {
     }
   }
 
+  handleClick = () => {
+    axios.post('users/sessions')
+      .then(() => this.props.setUserId(''))
+  }
+
   componentDidMount() {
     axios.get('users/sessions', {
       userId: this.props.Userid
@@ -147,7 +152,7 @@ class Navbar extends Component {
             <Typography  className={classes.greeting} variant="title" color="inherit" noWrap>
               {this.state.email}
             </Typography>
-            <Button color="inherit">Log Out</Button>
+            <Button color="inherit" onClick={this.handleClick}>Log Out</Button>
           </Toolbar>
         </AppBar>
       </div>

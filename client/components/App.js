@@ -54,7 +54,7 @@ class App extends Component {
       <div>
         {
           this.state.userId ?
-            <Navbar userId={this.state.userId}/>
+            <Navbar setUserId={this.setUserId} userId={this.state.userId}/>
             :
             <NavAuth setUserId={this.setUserId} />
         }

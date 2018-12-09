@@ -55,20 +55,25 @@ router.post('/users', (req, res) => {
 })
 
 router.post('/users/sessions', (req, res) => {
-  if (!req.body.password.trim()) {
+  if (req.session.userId) {
+    req.session = null;
+    res.status(200).send();    
+  } else if (!req.body.password.trim()) {
     res.status(403).send('Empty Password');
+  } else {
+    User.findOne({email: req.body.email}, (err, user) => {
+      if (err) {
+        res.send(err);
+      } else if (!user || !bcrypt.compareSync(req.body.password, user.passwordDigest)) {
+        res.send("Invalid Credentials")
+      } else {
+        req.session.userId = user._id
+        res.json(user._id);
+      }
+    })
   }
-  User.findOne({email: req.body.email}, (err, user) => {
-    if (err) {
-      res.send(err);
-    } else if (!user || !bcrypt.compareSync(req.body.password, user.passwordDigest)) {
-      res.send("Invalid Credentials")
-    } else {
-      req.session.userId = user._id
-      res.json(user._id);
-    }
-  })
 })
+
 
 router.get('/users/sessions/', (req, res) => {
   if(req.session.userId) {
