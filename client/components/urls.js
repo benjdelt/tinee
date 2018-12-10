@@ -42,8 +42,6 @@ class Urls extends Component {
   }
 
   updateUrl(url) {
-    // console.log(url)
-    // console.log(this.state.urls)
     const newUrls = this.state.urls.splice()
     const newIndex = newUrls.forEach((u, i) => {
       if (u._id === url._id) {
@@ -51,7 +49,6 @@ class Urls extends Component {
       }
       return -1;
     })
-    console.log(newIndex);
     newUrls[newIndex] = url;
     this.setState({
       urls: newUrls
