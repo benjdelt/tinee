@@ -31,6 +31,16 @@ router.post('/urls/',(req, res) => {
   })
 })
 
+router.post('/urls/:id', (req, res) => {
+  Url.findOneAndUpdate({_id: req.params.id }, { longVersion: req.body.longUrl}, (err, url) => {
+    if (err) {
+      console.error(err);
+    }
+    url.longVersion = req.body.longUrl;
+    res.json(url);
+  })
+})
+
 router.get('/urls/', (req, res) => {
   Url.find({ user_id: req.session.userId }, (err, urls) =>{
     if(err) {

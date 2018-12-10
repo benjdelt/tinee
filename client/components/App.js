@@ -61,7 +61,7 @@ class App extends Component {
           <ShortenForm setUrlData={this.setUrlData} />
           {
             this.state.userId ?
-              <Urls newUrl={this.state.longUrl} />
+              <Urls newUrl={this.state.longUrl} setUrlData={this.setUrlData} />
               :
               <UrlUnauth 
                 longUrl={this.state.longUrl} 
