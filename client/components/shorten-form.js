@@ -62,6 +62,13 @@ class ShortenForm extends Component {
       })
       return;
     }
+    if (!this.state.value.match(/[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/)) {
+      this.setState({
+        label: "Invalid URL format",
+        error: true
+      })
+      return;
+    }
     axios.post('/urls', {
       longUrl: this.state.value,
     }).then(res => {

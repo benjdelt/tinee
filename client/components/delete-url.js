@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import Delete from '@material-ui/icons/Delete';
 import Dialog from '@material-ui/core/Dialog';
@@ -29,6 +30,7 @@ class DeleteUrl extends React.Component {
     };
     // this.handleClickOpen = this.handleClickOpen.bind(this);
     // this.handleClickClose = this.handleClickClose.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   
   handleClickOpen = () => {
@@ -38,6 +40,15 @@ class DeleteUrl extends React.Component {
   handleClose = () => {
     this.setState({ open: false });
   };
+
+  handleSubmit(event) {
+    event.preventDefault();
+    axios.post(`/urls/${this.props.url._id}/delete`)
+      .then(res => {
+        this.props.deleteUrl(res.data)
+        this.handleClose();
+      });
+  }
 
   render() {
     const { classes } = this.props;
@@ -50,9 +61,9 @@ class DeleteUrl extends React.Component {
           onClose={this.handleClose}
         >
           <DialogTitle style={{textAlign: 'center'}}>
-            {"Delete URL"}
+            Delete URL
           </DialogTitle>
-            <form>
+            <form onSubmit={this.handleSubmit}>
               <DialogContent>
                 <DialogContentText>
                   Are you sure?
@@ -62,7 +73,7 @@ class DeleteUrl extends React.Component {
                 <Button onClick={this.handleClose} color="inherit">
                   Cancel
                 </Button>
-                <Button type="submit" onClick={this.handleClose} variant="outlined" color="secondary">
+                <Button type="submit" variant="outlined" color="secondary">
                   Delete
                 </Button>
               </DialogActions>

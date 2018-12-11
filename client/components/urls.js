@@ -33,11 +33,35 @@ class Urls extends Component {
     this.state = {
       urls: [],
     }
+    this.updateUrl = this.updateUrl.bind(this);
+    this.deleteUrl = this.deleteUrl.bind(this);
   }
 
   getUrls() {
     axios.get('/urls')
       .then(res => this.setState({ urls: res.data }));
+  }
+
+  updateUrl(url) {
+    const newUrls = this.state.urls.splice();
+    const newIndex = newUrls.forEach((u, i) => {
+      if (u._id === url._id) {
+        return i;
+      }
+      return -1;
+    })
+    newUrls[newIndex] = url;
+    this.setState({
+      urls: newUrls
+    })
+  }
+
+  deleteUrl(url) {
+    let newUrls = this.state.urls;
+    newUrls = newUrls.filter(u => u._id !== url._id);
+    this.setState({
+      urls: newUrls
+    })
   }
 
   componentDidMount() {
@@ -73,8 +97,13 @@ class Urls extends Component {
                 /u/{url.shortVersion}
               </Button>
               <CopyUrl shortUrl={url.shortVersion}></CopyUrl>
-              <EditUrl></EditUrl>
-              <DeleteUrl></DeleteUrl>
+              <EditUrl 
+                url={url} 
+                setUrlData={this.props.setUrlData} 
+                updateUrl={this.updateUrl} 
+              >
+              </EditUrl>
+              <DeleteUrl url={url} deleteUrl={this.deleteUrl} ></DeleteUrl>
             </Grid>
           )
 
