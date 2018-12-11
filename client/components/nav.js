@@ -129,26 +129,19 @@ class Navbar extends Component {
               Tinee
             </Typography>
             <div className={classes.grow} />
-            <div className={classes.search}>
+            {/* <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
               </div>
               <Input
-                placeholder="Search…"
+                placeholder="Search in Url…"
                 disableUnderline
                 classes={{
                   root: classes.inputRoot,
                   input: classes.inputInput,
                 }}
               />
-            </div>
-              {/* <Avatar
-                // alt="JSmith"
-                // src="https://randomuser.me/api/portraits/men/43.jpg"
-                className={classNames( classes.bigAvatar, classes.notForMobile)}
-              >
-                J
-              </Avatar> */}
+            </div> */}
             <Typography  className={classes.greeting} variant="title" color="inherit" noWrap>
               {this.state.email}
             </Typography>
