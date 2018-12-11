@@ -45,7 +45,7 @@ class DeleteUrl extends React.Component {
     event.preventDefault();
     axios.post(`/urls/${this.props.url._id}/delete`)
       .then(res => {
-        console.log(res)
+        this.props.deleteUrl(res.data)
         this.handleClose();
       });
   }

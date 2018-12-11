@@ -34,6 +34,7 @@ class Urls extends Component {
       urls: [],
     }
     this.updateUrl = this.updateUrl.bind(this);
+    this.deleteUrl = this.deleteUrl.bind(this);
   }
 
   getUrls() {
@@ -42,7 +43,7 @@ class Urls extends Component {
   }
 
   updateUrl(url) {
-    const newUrls = this.state.urls.splice()
+    const newUrls = this.state.urls.splice();
     const newIndex = newUrls.forEach((u, i) => {
       if (u._id === url._id) {
         return i;
@@ -50,6 +51,14 @@ class Urls extends Component {
       return -1;
     })
     newUrls[newIndex] = url;
+    this.setState({
+      urls: newUrls
+    })
+  }
+
+  deleteUrl(url) {
+    let newUrls = this.state.urls;
+    newUrls = newUrls.filter(u => u._id !== url._id);
     this.setState({
       urls: newUrls
     })
@@ -94,7 +103,7 @@ class Urls extends Component {
                 updateUrl={this.updateUrl} 
               >
               </EditUrl>
-              <DeleteUrl url={url} ></DeleteUrl>
+              <DeleteUrl url={url} deleteUrl={this.deleteUrl} ></DeleteUrl>
             </Grid>
           )
 
