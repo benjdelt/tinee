@@ -32,11 +32,20 @@ router.post('/urls/',(req, res) => {
 })
 
 router.post('/urls/:id', (req, res) => {
-  Url.findOneAndUpdate({_id: req.params.id }, { longVersion: req.body.longUrl}, (err, url) => {
+  Url.findOneAndUpdate({_id: req.params.id, user_id: req.session.userId }, { longVersion: req.body.longUrl}, (err, url) => {
     if (err) {
       console.error(err);
     }
     url.longVersion = req.body.longUrl;
+    res.json(url);
+  })
+})
+
+router.post('/urls/:id/delete', (req, res) => {
+  Url.findOneAndDelete({_id: req.params.id, user_id: req.session.userId }, (err, url) => {
+    if(err) {
+      console.error(err);
+    }
     res.json(url);
   })
 })

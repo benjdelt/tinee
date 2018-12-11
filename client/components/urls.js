@@ -94,7 +94,7 @@ class Urls extends Component {
                 updateUrl={this.updateUrl} 
               >
               </EditUrl>
-              <DeleteUrl></DeleteUrl>
+              <DeleteUrl url={url} ></DeleteUrl>
             </Grid>
           )
 
