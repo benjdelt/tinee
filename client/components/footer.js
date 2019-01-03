@@ -5,7 +5,6 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
 // TODO 
-// - Target _blank for links 
 // - color theme for links
 
 
