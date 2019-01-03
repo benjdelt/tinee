@@ -4,7 +4,21 @@ URL shortener built with **Mongo**, **Express**, **React** and **Node**. The bas
 
 ## Screenshots
 
+![Shorten url](docs/shorten.gif)
 
+*Shorten a URL as an unauthenticated user*
+
+![Login](docs/login.gif)
+
+*Sign into an existing account and retrieve previously saved links*
+
+![Edit url](docs/edit.gif)
+
+*Edit a specific URL*
+
+![Delete url](docs/delete.gif)
+
+*Delete a specific URL*
 
 ## Getting Started
 
