@@ -33,7 +33,13 @@ function DenseAppBar(props) {
       <Grid container spacing={24}>
         <Grid item md={4}>
           <Typography variant="caption" color="primary">
-            Tinee by <a href="https://benjdelt.github.io/">Ben Deltenre</a> 
+            Tinee by <a 
+              href="https://benjdelt.github.io/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+            >
+              Ben Deltenre
+            </a> 
           </Typography>
         </Grid>
         <Grid item md={4}>
@@ -43,7 +49,14 @@ function DenseAppBar(props) {
         </Grid>
         <Grid item md={4}>
           <Typography variant="caption" color="primary">
-            Logo made with <a href="https://www.designevo.com/en/" title="Free Online Logo Maker">DesignEvo</a>
+            Logo made with <a 
+              href="https://www.designevo.com/en/" 
+              title="Free Online Logo Maker"
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              DesignEvo
+            </a>
           </Typography>
         </Grid>
       </Grid>
